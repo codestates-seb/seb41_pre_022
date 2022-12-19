@@ -26,7 +26,6 @@ const ProfileContainer = styled.div`
   align-items: center;
   gap: 10px;
   padding : 5px;
-  margin: 5px;
 `
 
 const AvatarImg = styled.div`
