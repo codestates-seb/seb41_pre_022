@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Profile from '../component/Profile';
 
-function MyPage() {
+function MyPage({user}) {
+  const [editMode, seteditMode] = useState(false);
   return (
-    <div>MyPage</div>
+    <div>
+      <Profile/>
+    </div>
   )
 }
 
