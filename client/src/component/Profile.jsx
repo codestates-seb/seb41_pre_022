@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import {MdEdit} from 'react-icons/md'
-function Profile({user}) {
+function Profile({user, onClickEditBtn}) {
     // const {email, name} = user;
   return (
     <ProfileContainer>
@@ -10,7 +10,7 @@ function Profile({user}) {
         <Name>sehanKim</Name>
         <Email>rlatp1409@gmail.com</Email>
       </NameEmailContainer>
-      <EditBtn>
+      <EditBtn onClick={onClickEditBtn}>
         <i style={{verticalAlign: 'middle'}}><MdEdit size="20"/></i>
         <span> Edit Profile</span>
       </EditBtn>
