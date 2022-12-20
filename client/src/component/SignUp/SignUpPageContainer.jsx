@@ -1,12 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import SignUpSocial from "./SignUpSocial";
+import { FaQuestionCircle } from "react-icons/fa";
+
 //SignUpPage 전체 화면
 const Container = styled.div`
-  height: 973px;
-  width: 775px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
+  a {
+    color: #007acc;
+  }
+  a:active {
+    color: #007acc;
+  }
 `;
 //좌측 텍스트컨테이너
 const TextContainer = styled.div`
@@ -42,8 +50,8 @@ const ContentsContainer = styled.div`
   justify-content: center;
   justify-content: space-evenly;
   width: 316px;
-  height: 937.5px;
   .rightsideFooter {
+    text-align: center;
     font-size: 13px;
     line-height: 17px;
     padding: 16px;
@@ -54,17 +62,6 @@ const ContentsContainer = styled.div`
   }
   div {
     margin-top: 6px;
-  }
-`;
-//버튼 3개 모음 컨테이너
-const ButtonContainer = styled.div`
-  height: 138px;
-  width: 316px;
-  display: flex;
-  flex-direction: column;
-  button {
-    padding: 10.4px;
-    margin: 4px 0;
   }
 `;
 //Input부터 Policy까지 컨테이너
@@ -119,11 +116,22 @@ const FormContainer = styled.div`
       "Liberation Sans", sans-serif;
   }
   .notrobotContainer {
-    border: 1px solid black;
-    width: 218px;
-    height: 144px;
-    padding: 8px 0 2px 0;
+    background-color: rgb(241, 242, 243);
+    border: 1px solid rgb(214, 217, 220);
+    width: 268px;
+    height: 156px;
+    padding: 6px 0 2px 0;
     margin: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      border: 1px solid rgb(214, 217, 220);
+      width: 156;
+      height: 136;
+      box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 4px 1px;
+      /* margin: auto; */
+    }
   }
   .checkboxContainer {
     display: flex;
@@ -131,6 +139,7 @@ const FormContainer = styled.div`
     line-height: 15.7px;
     text-align: left;
     font-weight: 400;
+    margin-bottom: 7px;
   }
   .checkboxContainer > #checkbox {
     cursor: pointer;
@@ -138,7 +147,7 @@ const FormContainer = styled.div`
     border-radius: 20px;
     width: 15px;
     height: 12px;
-    margin-top: 5px;
+    margin-top: 7px;
   }
   .checkboxContainer > button {
     width: 15px;
@@ -148,6 +157,8 @@ const FormContainer = styled.div`
   .checkboxText > label {
     cursor: pointer;
     margin-left: 2px;
+
+    border: rgb(214, 217, 220);
     font-family: -apple-system, "system-ui", "Sehoe UI Adjusted", "Segoe UI",
       "Liberation Sans", sans-serif;
   }
@@ -227,11 +238,7 @@ function SignUpPageContainer() {
         </div>
       </TextContainer>
       <ContentsContainer>
-        <ButtonContainer>
-          <button>Sign up with Google</button>
-          <button>Sign up with GitHub</button>
-          <button>Sign up with Facebook</button>
-        </ButtonContainer>
+        <SignUpSocial />
         <FormContainer>
           <div className="inputLabel">
             <label for="displayName">Display name</label>
@@ -250,7 +257,12 @@ function SignUpPageContainer() {
             Passwords must contain at least eight characters, including at least
             1 letter and 1 number.
           </div>
-          <div className="notrobotContainer">I'm not a robot</div>
+          <div className="notrobotContainer">
+            <img
+              alt="im not a robot"
+              src="https://user-images.githubusercontent.com/110904866/208684791-1b5706d2-80f6-49d8-900f-6eb3e321e0af.png"
+            ></img>
+          </div>
           <div className="checkboxContainer">
             <input id="checkbox" type="checkbox" />
             <div className="checkboxText">
@@ -259,7 +271,7 @@ function SignUpPageContainer() {
                 invitations, company announcements, and digests.
               </label>
             </div>
-            <button>?</button>
+            <FaQuestionCircle size="30" color="rgb(106,115,124)" />
           </div>
           <button className="blueButton">Sign up</button>
           <div className="policy">
