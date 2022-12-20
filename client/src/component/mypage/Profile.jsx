@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components';
 import {MdEdit} from 'react-icons/md'
 function Profile({user, onClickEditBtn}) {
-    // const {email, name} = user;
+    const {email, name} = user;
   return (
     <ProfileContainer>
       <AvatarImg>사진</AvatarImg>
       <NameEmailContainer>
-        <Name>sehanKim</Name>
-        <Email>rlatp1409@gmail.com</Email>
+        <Name>{name}</Name>
+        <Email>{email}</Email>
       </NameEmailContainer>
       <EditBtn onClick={onClickEditBtn}>
         <i style={{verticalAlign: 'middle'}}><MdEdit size="20"/></i>
@@ -19,8 +19,6 @@ function Profile({user, onClickEditBtn}) {
 }
 
 const ProfileContainer = styled.div`
-  position: relative;
-  max-width: 1400px;
   display: flex;
   flex-direction: row;
   align-items: center;
