@@ -3,18 +3,20 @@ import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { HeadButton } from './Login/buttons';
 import React from 'react'
 import styled from 'styled-components'
-import stack from '../static/HeadIcon.svg';
+import stackoverflow from '../static/img/stackoverflow.png'
+import { useNavigate } from 'react-router-dom';
 // import { faStackOverflow } from '@fortawesome/fontawesome-free-brands';
 
 
 
 const HeadBar = styled.header`
   width: 100%;
-  height: 50px;
   display: flex;
+  flex-direction: row;
+  gap: 10px;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 5px;
   background-color: hsl(210 , 7%, 97.5%);
   box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
     0 2px 8px hsla(0, 0%, 0%, 0.05);
@@ -25,12 +27,9 @@ const HeadBar = styled.header`
   .logo-img{
   }
  .stack {
-  display: flex;
-  width:50px
+  height:50px;
  }
-
 `
-
 
 const HeadUl = styled.ul`
   display: flex;
@@ -45,23 +44,41 @@ const HeadLi =styled.li`
     border-radius: 15px;
   }
 `
+const HeadSearchBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 3px;
+  align-items: center;
+`
 const HeadInput = styled.input`
+  background-color: white;
+  border: none;
   width: 600px;
   height: 35px;
+  outline: none;
+  font-size: 1rem;
 `
 
-
 function Header() {
+  const navigate = useNavigate();
+
+  const toLoginHandler = () => {
+    navigate('/login');
+  }
+
+  const toSignUpHandler = () => {
+    navigate('/signup');
+  }
   return (
     <HeadBar>
       <FontAwesomeIcon className='menu' icon={faBars} />
-      <div className='stack'>
       {/* <FontAwesomeIcon icon={faStackOverflow} size="2x" /> */}
-      <img className='stack' src={stack}/>
-      <span>stack overflow</span>
-      <FontAwesomeIcon icon="fab fa-stack-overflow" />
-     
-      </div>
+      <img className='stack' src={stackoverflow} alt='stackoverflow'/>
+      {/* <FontAwesomeIcon icon="fab fa-stack-overflow" /> */}
       
       <HeadUl>
         <HeadLi>About</HeadLi>
@@ -69,14 +86,13 @@ function Header() {
         <HeadLi>For Teams</HeadLi>
       </HeadUl>
 
-      <div >
-      <FontAwesomeIcon icon={faMagnifyingGlass} />
-      <HeadInput type="text" placeholder='Search' />
+      <HeadSearchBar>
+        <FontAwesomeIcon icon={faMagnifyingGlass} size="lg"/>
+        <HeadInput type="text" placeholder='Search' />
+      </HeadSearchBar>
       
-      </div>
-      
-      <HeadButton bgColor="hsl(205, 46%, 92%)" hvColor='hsl(206, 93%, 83.5%)'>Log in</HeadButton>
-      <HeadButton bgColor="hsl(206, 100%, 52%)" color='white' hvColor="hsl(209, 100%, 37.5%)">sign up</HeadButton>
+      <HeadButton onClick={toLoginHandler} bgColor="hsl(205, 46%, 92%)" hvColor='hsl(206, 93%, 83.5%)'>Log in</HeadButton>
+      <HeadButton onClick={toSignUpHandler} bgColor="hsl(206, 100%, 52%)" color='white' hvColor="hsl(209, 100%, 37.5%)">sign up</HeadButton>
    
    
     </HeadBar>

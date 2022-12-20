@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import GoogleLogo  from '../../static/google.svg';
-import GitHubLogo  from '../../static/git.svg';
-import FacebookLogo  from '../../static/facebook.svg';
+import GoogleLogo  from '../../static/img/google.svg';
+import GitHubLogo  from '../../static/img/git.svg';
+import FacebookLogo  from '../../static/img/facebook.svg';
 import { SocialButton } from "./buttons";
-import stack from "../../static/HeadIcon.svg";
+import stack from "../../static/img/HeadIcon.svg";
 
 
 
@@ -19,7 +19,6 @@ const SocialContainer = styled.div`
     height: 25px;
     margin-right: 5px;
   }
-  
   .Face {
     width: 18px;
     height: 18px;
@@ -36,20 +35,20 @@ const SocialLogin = () => {
   return (
     <SocialContainer className="social-container">
       <div className="stackDiv">
-        <img src={stack}/>
+        <img src={stack} alt='stack'/>
       </div>
         <SocialButton bgColor="#fff" hvColor="hsl(210, 8%, 95%)">
-        <img className="Google" src={GoogleLogo}/>
+        <img className="Google" src={GoogleLogo} alt='gogglelogo'/>
         Log in with Google
         </SocialButton>
       
         <SocialButton bgColor="hsl(210, 8%, 20%)" color="#fff">
-         <img src={GitHubLogo}/>
+         <img src={GitHubLogo} alt='githublogo'/>
         Log in with GitHub
         </SocialButton>
    
         <SocialButton bgColor="#385499" color="#fff" hvColor="hsl(209, 100%, 26%)">
-        <img className="Face" src={FacebookLogo}/>
+        <img className="Face" src={FacebookLogo} alt='facebooklogo'/>
         Log in with Facebook
         </SocialButton>
   

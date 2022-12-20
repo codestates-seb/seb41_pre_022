@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function SideMenu() {
-    const location = useLocation();
-    const [path, setPath] = useState();
-    useEffect(() => {
-        setPath(location.pathname);
-    }, [location])
+function SideMenu({path}) {
+    // const location = useLocation();
+    // const [path, setPath] = useState();
+    // useEffect(() => {
+    //     setPath(location.pathname);
+    // }, [location])
 
     //라우트 정보 name은 menu에 표시될 이름, path는 실제 route path
     const sideMenus = [
@@ -15,6 +15,7 @@ function SideMenu() {
         {name : 'Profile', path: '/mypage'},
         {name : 'Question', path: '/question'},
     ]
+
   return (
     <SideMenuContainer>
         {sideMenus.map((menu,idx) => 
@@ -27,6 +28,8 @@ function SideMenu() {
 }
 
 const SideMenuContainer = styled.div`
+    min-height: 100vh;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;

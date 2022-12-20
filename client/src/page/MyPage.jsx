@@ -4,7 +4,7 @@ import Profile from '../component/MyPage/Profile';
 import EditProfile from '../component/MyPage/EditProfile';
 
 function MyPage() {
-  const [user, setuser] = useState({
+  const [user, ] = useState({
     name : "sehanKim",
     email : "rlatp1409@gmail.com"
   })
