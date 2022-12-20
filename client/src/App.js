@@ -1,10 +1,26 @@
+import Header from "./component/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./page/Main";
+import Login from "./page/Login";
+import SignUp from "./page/SignUp";
+import MyPage from "./page/MyPage";
 import "./App.css";
-import Headbar from "./Headbar";
 
 function App() {
   return (
     <div className="App">
-      <Headbar />
+      <Header></Header>
+      <Login />
+      <section className="main-view">
+        <BrowserRouter>
+          <Routes>
+            <Route path="*" element={<Main />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/mypage" element={<MyPage />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </section>
     </div>
   );
 }
