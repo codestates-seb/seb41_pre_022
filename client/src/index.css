@@ -1,7 +1,9 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; 
+  font-family: -apple-system, "system-ui", "Sehoe UI Adjusted", "Segoe UI",
+  "Liberation Sans", sans-serif;
 }
 
 a {

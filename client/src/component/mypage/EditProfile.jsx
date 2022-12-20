@@ -35,7 +35,7 @@ function EditProfile({editMode, setEditMode,userInfo}) {
     //삭제버튼 클릭
     const onDeleteHandler = (event) => {
         event.preventDefault();
-        
+        //삭제 구현 필요
     }
   return (
     <div>
