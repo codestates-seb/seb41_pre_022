@@ -39,7 +39,7 @@ function EditProfile({editMode, setEditMode,userInfo}) {
     }
   return (
     <div>
-    <Setting on={true}>Setting</Setting>
+    <Setting isClicked={true}>Setting</Setting>
     <EditProfileContainer editMode={editMode}>
         <EditProfileTitle>Edit your profile</EditProfileTitle>
         <form className='input-container'>
@@ -160,7 +160,7 @@ const Setting = styled.div`
     display: inline;
     padding: 5px 15px 5px 15px;
     border-radius: 15px;
-    ${(props) => props.on ? `
+    ${(props) => props.isClicked ? `
         background-color: #f28603;
         color: white
     ` : `

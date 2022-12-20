@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components';
-import Profile from '../component/mypage/Profile';
-import EditProfile from '../component/mypage/EditProfile';
+import Profile from '../component/MyPage/Profile';
+import EditProfile from '../component/MyPage/EditProfile';
 
 function MyPage() {
   const [user, setuser] = useState({
