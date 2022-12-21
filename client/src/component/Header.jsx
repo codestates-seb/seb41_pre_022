@@ -7,8 +7,6 @@ import stackoverflow from '../static/img/stackoverflow.png'
 import { useNavigate } from 'react-router-dom';
 // import { faStackOverflow } from '@fortawesome/fontawesome-free-brands';
 
-
-
 const HeadBar = styled.header`
   width: 100%;
   min-width: 1400px;

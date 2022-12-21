@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import {MdEdit} from 'react-icons/md'
+import { MdEdit } from 'react-icons/md'
 function Profile({user, onClickEditBtn}) {
     const {email, name} = user;
   return (

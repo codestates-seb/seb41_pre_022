@@ -33,7 +33,7 @@ function App() {
       <Header></Header>
       <section className="main-container">
       {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
-      {['/login','/signup'].includes(path) ?
+      {!['/login','/signup', '/question/ask'].includes(path) ?
       <section className="side-menu-section">
         <SideMenu path={path}></SideMenu>
       </section> : <></>

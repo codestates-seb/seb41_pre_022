@@ -16,7 +16,8 @@ function MyPage() {
   } 
   useEffect(() => {
     console.log(editMode);
-  }, [editMode])
+  }, [editMode]);
+  
   return (
     <MyPageContainer>
       <Profile user={user} onClickEditBtn={onClickEditBtn}/>
