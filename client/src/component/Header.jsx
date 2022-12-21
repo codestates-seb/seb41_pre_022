@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 // import { faStackOverflow } from '@fortawesome/fontawesome-free-brands';
 
 const HeadBar = styled.header`
+  position: sticky;
+  top: 0;
   width: 100%;
   display: flex;
   flex-direction: row;

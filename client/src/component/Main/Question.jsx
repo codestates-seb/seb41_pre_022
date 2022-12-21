@@ -18,7 +18,7 @@ const VoteAnswerView = styled.div`
     height: 19px;
     text-align: right;
   }
-  .vote {
+  .black {
     color: #0c0d0e;
   }
 `;
@@ -76,12 +76,12 @@ function Question({ question }) {
   return (
     <Container>
       <VoteAnswerView>
-        <div className="vote">0 votes</div>
+        <div className="black">0 votes</div>
         <div>1 answer</div>
         <div>8 views</div>
       </VoteAnswerView>
       <TitleTagAuthor>
-        <Title linkTo={"/?"}>{question.title}</Title>
+        <Title>{question.title}</Title>
 
         <Tags>
           <span>{question.tags}</span>

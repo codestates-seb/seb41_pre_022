@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import TopPart from "../component/Main/TopPart";
 import QuestionList from "../component/Main/QuestionList";
 import SideBar from "../component/Main/SideBar";
@@ -6,7 +7,7 @@ const questions = [
   {
     id: 1,
     title:
-      "titletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitl",
+      "titletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitltitletitletitlletitletitletitletitletitletitleitlletitletitletitletitletititlt",
     contents: "contents1",
     tags: "c#",
   },
@@ -21,7 +22,7 @@ const questions = [
     id: 4,
     title: "title44444",
     contents: "contents4",
-    tags: "python",
+    tags: ["python", "1123"],
   },
   { id: 5, title: "title11111", contents: "contents1" },
   { id: 6, title: "title11111", contents: "contents1" },
@@ -40,13 +41,18 @@ const questions = [
   { id: 19, title: "title11111", contents: "contents1" },
   { id: 20, title: "title11111", contents: "contents1" },
 ];
+const Container = styled.div`
+  display: flex;
+`;
 function Main() {
   return (
-    <div>
-      <TopPart />
-      <QuestionList questions={questions} />
+    <Container>
+      <div>
+        <TopPart />
+        <QuestionList questions={questions} />
+      </div>
       <SideBar />
-    </div>
+    </Container>
   );
 }
 
