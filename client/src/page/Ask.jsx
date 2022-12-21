@@ -28,7 +28,6 @@ function Ask({user}) {
     }
     useEffect(() => {
       console.log(question);
-      console.log(step);
     }, [question, step])
     
   return (
