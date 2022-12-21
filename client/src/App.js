@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./component/Header";
-import Main from "./page/Main";
-import Login from "./page/Login";
-import SignUp from "./page/SignUp";
-import MyPage from "./page/MyPage";
-import "./App.css";
-import SideMenu from "./component/SideMenu";
-import { useLocation } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import {Routes, Route} from 'react-router-dom';
+import Header from './component/Header';
+import Footer from './component/Footer';
+import Main from './page/Main';
+import Login from './page/Login';
+import SignUp from './page/SignUp';
+import MyPage from './page/MyPage';
+import Ask from './page/Ask';
+import './App.css';
+import SideMenu from './component/SideMenu';
+import { useLocation } from 'react-router-dom';
 import Question from "./page/Question";
-
 
 function App() {
   //현 주소에 대한 path를 반환합니다.
@@ -32,28 +33,26 @@ function App() {
     <div className="App">
       <Header></Header>
       <section className="main-container">
-        {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
-        {path !== "/login" && path !== "/signup" ? (
-          <section className="side-menu-section">
-            <SideMenu path={path}></SideMenu>
-          </section>
-        ) : (
-          <></>
-        )}
-
-
-        <section className="main-view-section">
+      {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
+      {!['/login','/signup', '/question/ask'].includes(path) ?
+      <section className="side-menu-section">
+        <SideMenu path={path}></SideMenu>
+      </section> : <></>
+      }
+      <section className="main-view-section">
           <Routes>
             <Route path="*" element={<Main />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/mypage" element={<MyPage />}></Route>
+            <Route path="/question/ask" element={<Ask />}></Route>
           </Routes>
 
           <Question />
 
         </section>
       </section>
+      <Footer></Footer>
     </div>
   );
 }

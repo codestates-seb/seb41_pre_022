@@ -11,6 +11,7 @@ const HeadBar = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
+  min-width: 1400px;
   display: flex;
   flex-direction: row;
   gap: 10px;
