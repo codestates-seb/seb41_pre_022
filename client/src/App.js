@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import Header from './component/Header';
+import Footer from './component/Footer';
 import Main from './page/Main';
 import Login from './page/Login';
 import SignUp from './page/SignUp';
 import MyPage from './page/MyPage';
+import Ask from './page/Ask';
 import './App.css';
 import SideMenu from './component/SideMenu';
 import { useLocation } from 'react-router-dom';
@@ -31,7 +33,7 @@ function App() {
       <Header></Header>
       <section className="main-container">
       {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
-      {path !== '/login' && path !== '/signup'?
+      {['/login','/signup'].includes(path) ?
       <section className="side-menu-section">
         <SideMenu path={path}></SideMenu>
       </section> : <></>
@@ -42,9 +44,11 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/mypage" element={<MyPage />}></Route>
+            <Route path="/question/ask" element={<Ask />}></Route>
           </Routes>
       </section>
       </section>
+      <Footer></Footer>
     </div>
   );
 }
