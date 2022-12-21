@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 const HeadBar = styled.header`
   width: 100%;
-  /* height: 50px; */
   display: flex;
   flex-direction: row;
   gap: 10px;
