@@ -8,6 +8,8 @@ import MyPage from "./page/MyPage";
 import "./App.css";
 import SideMenu from "./component/SideMenu";
 import { useLocation } from "react-router-dom";
+import Question from "./page/Question";
+
 
 function App() {
   //현 주소에 대한 path를 반환합니다.
@@ -38,6 +40,8 @@ function App() {
         ) : (
           <></>
         )}
+
+
         <section className="main-view-section">
           <Routes>
             <Route path="*" element={<Main />}></Route>
@@ -45,6 +49,9 @@ function App() {
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/mypage" element={<MyPage />}></Route>
           </Routes>
+
+          <Question />
+
         </section>
       </section>
     </div>
