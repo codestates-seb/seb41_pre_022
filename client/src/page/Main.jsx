@@ -46,11 +46,6 @@ const Container = styled.div`
   display: flex;
 `;
 function Main() {
-
-
-  const questions = [
-    {id : 1, title : "asdadsa", contents: 'asdasdsasda'},
-  ]
   //list element까지하고
   return (
     <Container>
