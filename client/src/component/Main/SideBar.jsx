@@ -183,7 +183,7 @@ function SideBar() {
         </li>
       </Widzet>
       <ReUsed>
-        <div className="title">Custon Filters</div>
+        <div className="title">Custom Filters</div>
         <div className="filterBox">
           <a href="https://stackoverflow.com/questions?edited=true">
             Create a custom filter
