@@ -21,19 +21,22 @@ public class QuestionDto {
     @AllArgsConstructor
     @Getter
     public static class Patch{
+        private long questionId;
         private String questionTitle;
         @NotBlank(message = "질문내용 수정을 하지 않을 경우 등록이 불가합니다.")
         private String questionBody;
+        public void setQuestionId(long questionId) {
+            this.questionId = questionId;
+        }
     }
 
     @NoArgsConstructor
+    @AllArgsConstructor
     @Getter
+    @Builder
     public static class Response{
         private long questionId;
+        private String questionTitle;
         private String questionBody;
-        public void Response(Question question) {
-            this.questionId = question.getQuestionId();
-            this.questionBody = question.getQuestionBody();
-        }
     }
 }

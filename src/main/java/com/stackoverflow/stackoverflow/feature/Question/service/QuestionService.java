@@ -31,8 +31,8 @@ public class QuestionService {
 
     public Question updateQuestion(long questionId, Question question) {
         Question findQuestion = questionRepository.findById(questionId).orElseThrow();
-        customBeanUtils.copyNonNullProperties(question, findQuestion);
-        return findQuestion;
+        Question response = customBeanUtils.copyNonNullProperties(question, findQuestion);
+        return response;
     }
 
 
