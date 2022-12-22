@@ -6,6 +6,8 @@ import com.stackoverflow.stackoverflow.Answer.dto.AnswerResponseDto;
 import com.stackoverflow.stackoverflow.Answer.entity.Answer;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 /* TODO Mapper 진행상황
 *   1. postDto >> Entity 변경
 *   2. patchDto >> Entity 변경
@@ -15,4 +17,5 @@ public interface AnswerMapper {
     Answer answerPostDtoToAnswer(AnswerPostDto answerPostDto);
     Answer answerPatchDtoToAnswer(AnswerPatchDto answerPatchDto);
     AnswerResponseDto answerToAnswerResponseDto(Answer answer);
+    List<AnswerResponseDto> answersToAnswerResponseDtos(List<Answer> answers);
 }

@@ -1,6 +1,7 @@
 package com.stackoverflow.stackoverflow.Answer.entity;
 
 import com.stackoverflow.stackoverflow.Member.entity.Member;
+import com.stackoverflow.stackoverflow.audit.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,22 +15,25 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class Answer {
+public class Answer extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long answerId;
 
     @Column(length = 1000, nullable = false)
     private String answerBody;
 
     //매핑 필요
+
+    /*@ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;*/
+
     /*@ManyToOne
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
 
-    @ManyToOne
-    @JoinColumn(name = "MEMBER_ID
-    private Member member;
+
 
     public void createAnswer(Member member, Question question){
         this.member = member;
