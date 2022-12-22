@@ -53,6 +53,7 @@ public class answerController {
     @PatchMapping("/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
                                       @RequestBody AnswerPatchDto answerPatchDto){
+        answerPatchDto.setAnswerId(answerId);
         //mapper를 통해 Dto를 Entity로 변환한 후 Service에 요청을 보대 답변을 수정하여 response에 저장
         Answer response = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
 
