@@ -31,8 +31,12 @@ public class QuestionService {
 
     public Question updateQuestion(long questionId, Question question) {
         Question findQuestion = questionRepository.findById(questionId).orElseThrow();
-        Question response = customBeanUtils.copyNonNullProperties(question, findQuestion);
-        return response;
+        Optional.ofNullable(question.getQuestionTitle())
+                .ifPresent(title -> findQuestion.setQuestionTitle(title));
+        Optional.ofNullable(question.getQuestionBody())
+                .ifPresent(body -> findQuestion.setQuestionBody(body));
+
+        return questionRepository.save(findQuestion);
     }
 
 
