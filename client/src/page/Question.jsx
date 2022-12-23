@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Dummy } from '../static/DummyDate/DummyDate'
 import { BsFilePersonFill } from "react-icons/bs";
+import WriteAnswer from '../component/Answer/WriteAnswer';
 
 export const QuestionTitle = styled.div`
   width: 100%;
@@ -20,12 +21,14 @@ export const AskButton = styled.button`
   background-color: hsl(206, 100%, 52%);
   color: #fff;
   border:1px solid hsl(206, 100%, 40%);
-  width: 100px;
-  height: 50px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   margin-right: 28px;
   border-radius: 5px;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
   font-size: 13px;
+  margin-bottom: ${(props) =>props.bottom };
+  margin-top: ${(props) =>props.top };
   cursor: pointer;
   &:hover {
     background-color: hsl(209, 100%, 37.5%);
@@ -47,13 +50,14 @@ span {
   
 }
 `
-const HrLine = styled.hr`
-  width: 95%;
+export const HrLine = styled.hr`
+  width: ${(props) => props.width};
   height: 1px;
   background-color: black;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left : auto;
   margin-right : auto;
+  margin-bottom: ${(props) =>props.top };
 `
 const Menu = styled.div`
   width: 50px;
@@ -147,6 +151,8 @@ const QuestionDiv = styled.div`
 }
 `
 
+
+
 function Question() {
   const [upDown, setUpDown] = useState(0)
   
@@ -163,7 +169,7 @@ function Question() {
   // }
 
   return (
-    <div> 
+    <div c> 
       <div>
         <QuestionTitle>
           <ul>
@@ -171,7 +177,7 @@ function Question() {
               <li key={data.id}>{data.title}</li>
             ))}
           </ul>
-        <AskButton>Ask Question</AskButton>
+        <AskButton width="120px" height="50px">Ask Question</AskButton>
         </QuestionTitle>
       </div>
       <div>
@@ -181,7 +187,7 @@ function Question() {
         <span>View {'1times'}</span>
         </QuestionBody>
       </div>
-      <HrLine />
+      <HrLine width="95%"/>
       <QuestionBar>
 
         <Menu>
@@ -207,7 +213,7 @@ function Question() {
         </QuestionDiv>
       </QuestionBar>
       
-      
+      <WriteAnswer />
     </div>
   )
 }

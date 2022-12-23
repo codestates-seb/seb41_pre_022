@@ -6,7 +6,7 @@ function Ask({user}) {
     //질문하기 페이지
     const [step, setStep] = useState(1);
     const [question, setQuestion] = useState({
-        user: user,
+        user: user, //answer
         title: "",
         detail: "",
         expect: "",
@@ -45,7 +45,7 @@ function Ask({user}) {
                 <li>Add “tags” which help surface your question to members of the community.</li>
                 <li>Review your question and post it to the site.</li>
             </ul>
-        </AskDescription>
+        </AskDescription> 
         <TitleInputBox question={question} setQuestion={setQuestion} onNextHandler={onNextHandler}></TitleInputBox>
         <DetailInputBox question={question} setQuestion={setQuestion} step={step} onNextHandler={onNextHandler}></DetailInputBox>
         <ExpectInputBox question={question} setQuestion={setQuestion} step={step} onNextHandler={onNextHandler}></ExpectInputBox>
@@ -199,7 +199,7 @@ const AskDescription = styled.div`
     }
 `
 
-const InputBoxContainer = styled.div`
+export const InputBoxContainer = styled.div`
     background-color: white;
     ${(props) => props.disable ? `
         background-color: lightgray;
