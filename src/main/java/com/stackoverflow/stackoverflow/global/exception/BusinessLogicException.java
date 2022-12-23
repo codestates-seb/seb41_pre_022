@@ -1,4 +1,4 @@
-package com.stackoverflow.stackoverflow.exception;
+package com.stackoverflow.stackoverflow.global.exception;
 
 import lombok.Getter;
 

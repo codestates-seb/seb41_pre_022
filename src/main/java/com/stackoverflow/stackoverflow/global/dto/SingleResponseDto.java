@@ -1,4 +1,4 @@
-package com.stackoverflow.stackoverflow.dto;
+package com.stackoverflow.stackoverflow.global.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package com.stackoverflow.stackoverflow.response;
+package com.stackoverflow.stackoverflow.global.response;
 
-import com.stackoverflow.stackoverflow.exception.ExceptionCode;
+import com.stackoverflow.stackoverflow.global.exception.ExceptionCode;
 import lombok.Getter;
 
 @Getter

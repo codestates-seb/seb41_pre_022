@@ -1,7 +1,7 @@
-package com.stackoverflow.stackoverflow.advice;
+package com.stackoverflow.stackoverflow.global.advice;
 
-import com.stackoverflow.stackoverflow.exception.BusinessLogicException;
-import com.stackoverflow.stackoverflow.response.ErrorResponse;
+import com.stackoverflow.stackoverflow.global.exception.BusinessLogicException;
+import com.stackoverflow.stackoverflow.global.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.stackoverflow.stackoverflow.dto;
+package com.stackoverflow.stackoverflow.global.dto;
 
 import lombok.Getter;
 import org.springframework.data.domain.Page;
