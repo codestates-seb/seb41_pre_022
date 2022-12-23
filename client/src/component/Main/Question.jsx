@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const Container = styled.div`
+const Container = styled.li`
   display: flex;
   margin-left: 40px;
 `;
@@ -10,7 +10,6 @@ const VoteAnswerView = styled.div`
   margin: 0 16px 4px 0;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
   flex-direction: column;
   color: #6a737c;
   div {
@@ -82,7 +81,6 @@ function Question({ question }) {
       </VoteAnswerView>
       <TitleTagAuthor>
         <Title>{question.title}</Title>
-
         <Tags>
           <span>{question.tags}</span>
           <Author>

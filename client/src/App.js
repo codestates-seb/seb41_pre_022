@@ -47,10 +47,9 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/mypage" element={<MyPage />}></Route>
+            <Route path="/question" element={<Question />}></Route>
             <Route path="/question/ask" element={<Ask />}></Route>
           </Routes>
-
-          <Question />
         </section>
       </section>
       <Footer></Footer>
