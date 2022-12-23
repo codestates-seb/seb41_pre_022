@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const HeadBar = styled.header`
   position: sticky;
   top: 0;
+  z-index: 2;
   width: 100%;
   min-width: 1400px;
   display: flex;
@@ -24,8 +25,6 @@ const HeadBar = styled.header`
   .menu {
     font-size: 19px;
     display: block;
-  }
-  .logo-img {
   }
   .stack {
     height: 50px;
@@ -63,6 +62,13 @@ const HeadInput = styled.input`
   outline: none;
   font-size: 1rem;
 `;
+const OrangeLine = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 3px;
+  background-color: hsl(27, 90%, 55%);
+`;
 
 function Header() {
   const navigate = useNavigate();
@@ -70,12 +76,12 @@ function Header() {
   const toLoginHandler = () => {
     navigate("/login");
   };
-
   const toSignUpHandler = () => {
     navigate("/signup");
   };
   return (
     <HeadBar>
+      <OrangeLine />
       <FontAwesomeIcon className="menu" icon={faBars} />
       {/* <FontAwesomeIcon icon={faStackOverflow} size="2x" /> */}
       <img className="stack" src={stackoverflow} alt="stackoverflow" />
