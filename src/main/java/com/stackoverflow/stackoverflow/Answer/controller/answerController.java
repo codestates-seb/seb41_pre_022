@@ -67,6 +67,7 @@ public class answerController {
     public ResponseEntity getAnswers(@PathVariable("question-id") @Positive long questionId,
                                      @RequestParam("page") @Positive int page,
                                      @RequestParam("size") @Positive int size){
+        //List<Answer> response = answerService.findAnswers(questionId, page-1, size).getContent();
         Page<Answer> pageAnswers = answerService.findAnswers(questionId,page-1, size);
         List<Answer> response = pageAnswers.getContent();
         return new ResponseEntity<>(
