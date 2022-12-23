@@ -2,6 +2,7 @@ import styled from "styled-components";
 const Container = styled.li`
   display: flex;
   margin-left: 40px;
+  margin-top: 7px;
 `;
 const VoteAnswerView = styled.div`
   width: 108px;
@@ -69,6 +70,7 @@ const Author = styled.div`
   justify-content: flex-end;
   div {
     margin-left: 10px;
+    margin-top: 6px;
   }
 `;
 function Question({ question }) {
