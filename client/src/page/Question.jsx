@@ -10,7 +10,7 @@ import WriteAnswer from "../component/Answer/WriteAnswer";
 const Container = styled.div`
   width: 80%;
   height: 100%;
-  
+`;
 export const QuestionTitle = styled.div`
   height: 100px;
   font-size: 36px;
@@ -133,7 +133,6 @@ function Question() {
   // }
 
   return (
-
     <Container>
       <QuestionTitle>
         <ul>
