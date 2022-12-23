@@ -10,7 +10,7 @@ import WriteAnswer from "../component/Answer/WriteAnswer";
 const Container = styled.div`
   width: 80%;
   height: 100%;
-`;
+  
 export const QuestionTitle = styled.div`
   height: 100px;
   font-size: 36px;
@@ -66,7 +66,6 @@ const MainBar = styled.div`
     display: flex;
   }
 `;
-
 export const HrLine = styled.hr`
   width: ${(props) => props.width};
   height: 1px;
@@ -75,7 +74,6 @@ export const HrLine = styled.hr`
   margin-left: auto;
   margin-bottom: ${(props) => props.top};
 `;
-
 const LanguageButton = styled.button`
   width: 40px;
   height: 33px;
@@ -135,6 +133,7 @@ function Question() {
   // }
 
   return (
+
     <Container>
       <QuestionTitle>
         <ul>
