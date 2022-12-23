@@ -58,7 +58,7 @@ public class AnswerService { //Controller의 요청 처리 클래스
     //gets에 연동
     public Page<Answer> findAnswers(long questionId, int page, int size) {
         questionService.findVerifiedMember(questionId);
-        return answerRepository.findAllByAnswerId(questionId, PageRequest.of(page-1, size,
+        return answerRepository.findAllByAnswerId(questionId, PageRequest.of(page, size,
                 Sort.by("answerId").descending()));
     }
 
