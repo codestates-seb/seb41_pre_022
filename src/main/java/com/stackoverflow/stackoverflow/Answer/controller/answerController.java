@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
@@ -36,14 +37,12 @@ public class answerController {
 
     //답변 생성
     @PostMapping
-    public ResponseEntity postAnswer(@RequestBody AnswerPostDto answerPostDto/*,
+    public ResponseEntity postAnswer(@RequestBody AnswerPostDto answerPostDto,
                                      @RequestParam("memberId") @Positive long memberId,
-                                     @RequestParam("questionId") @Positive long questionId*/){
+                                     @RequestParam("questionId") @Positive long questionId){
 
         //mapper를 통해 Dto를 Entity로 변환한 후 Service에 요청을 보내 답변을 생성하는 요청을 보내 response에 저장
-        //Answer response = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto), memberId, questionId);
-        Answer response = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto));
-
+        Answer response = answerService.createAnswer(mapper.answerPostDtoToAnswer(answerPostDto), memberId, questionId);
 
         //mapper를 이용해 위의 처리한 요청을 다시 Entity에서 Dto로 변환하여 리턴처리
         return new ResponseEntity<>(mapper.answerToAnswerResponseDto(response), HttpStatus.CREATED);
@@ -53,7 +52,6 @@ public class answerController {
     @PatchMapping("/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
                                       @RequestBody AnswerPatchDto answerPatchDto){
-        answerPatchDto.setAnswerId(answerId);
         //mapper를 통해 Dto를 Entity로 변환한 후 Service에 요청을 보대 답변을 수정하여 response에 저장
         Answer response = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
 
@@ -62,13 +60,13 @@ public class answerController {
     }
 
     //답변 조회(질문에 달린 모든 답변 조회)
-    /*@GetMapping("/fromquestion/{question-id}")
+    @GetMapping("/fromquestion/{question-id}")
     public ResponseEntity getAnswers(@PathVariable("question-id") @Positive long questionId,
                                      @RequestParam("page") @Positive int page,
                                      @RequestParam("size") @Positive int size){
-        List<Answer> response = answerService.findAnswers(questionId, page, size).getContent();
-        return new ResponseEntity<>(mapper.answersToAnswerResponseDtos(response), HttpStatus.OK);
-    }*/
+        //List<Answer> response = answerService.
+        return ResponseEntity.ok(null);
+    }
 
     //답변 삭제(1개)
     @DeleteMapping("/{answer-id}")
