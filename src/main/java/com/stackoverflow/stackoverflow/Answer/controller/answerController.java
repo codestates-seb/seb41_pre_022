@@ -5,8 +5,10 @@ import com.stackoverflow.stackoverflow.Answer.dto.AnswerPostDto;
 import com.stackoverflow.stackoverflow.Answer.entity.Answer;
 import com.stackoverflow.stackoverflow.Answer.mapper.AnswerMapper;
 import com.stackoverflow.stackoverflow.Answer.service.AnswerService;
+import com.stackoverflow.stackoverflow.dto.MultiResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.connector.Response;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -52,6 +54,7 @@ public class answerController {
     @PatchMapping("/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive long answerId,
                                       @RequestBody AnswerPatchDto answerPatchDto){
+        answerPatchDto.setAnswerId(answerId);
         //mapper를 통해 Dto를 Entity로 변환한 후 Service에 요청을 보대 답변을 수정하여 response에 저장
         Answer response = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto));
 
@@ -60,12 +63,17 @@ public class answerController {
     }
 
     //답변 조회(질문에 달린 모든 답변 조회)
-    @GetMapping("/fromquestion/{question-id}")
+    @GetMapping("/findQuestion/{question-id}")
     public ResponseEntity getAnswers(@PathVariable("question-id") @Positive long questionId,
                                      @RequestParam("page") @Positive int page,
                                      @RequestParam("size") @Positive int size){
-        //List<Answer> response = answerService.
-        return ResponseEntity.ok(null);
+        Page<Answer> pageAnswers = answerService.findAnswers(questionId,page-1, size);
+        List<Answer> response = pageAnswers.getContent();
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.answersToAnswerResponseDtos(response),
+                        pageAnswers),
+                HttpStatus.OK);
+
     }
 
     //답변 삭제(1개)
