@@ -34,7 +34,6 @@ const CounterSorted = styled.div`
     border-radius: 5px;
   }
 `;
-
 function AnswerList({ AnswerDummy }) {
   return (
     <Container>
