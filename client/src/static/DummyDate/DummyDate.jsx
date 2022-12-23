@@ -9,7 +9,6 @@ export const Dummy = {
     },
   ],
 };
-
 export const AnswerDummy = {
   data: [
     {
