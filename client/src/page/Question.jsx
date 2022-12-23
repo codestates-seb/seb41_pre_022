@@ -5,6 +5,8 @@ import { BsFilePersonFill } from "react-icons/bs";
 import SideBar from "../component/Main/SideBar";
 import AnswerList from "../component/Answer/AnswerList";
 import UpDownButton from "../component/Answer/UpDownButton";
+import WriteAnswer from '../component/Answer/WriteAnswer';
+
 const Container = styled.div`
   width: calc(100% - 164px);
 `;
@@ -22,13 +24,15 @@ export const QuestionTitle = styled.div`
 export const AskButton = styled.button`
   background-color: hsl(206, 100%, 52%);
   color: #fff;
-  border: 1px solid hsl(206, 100%, 40%);
-  width: 100px;
-  height: 50px;
+  border:1px solid hsl(206, 100%, 40%);
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   margin-right: 28px;
   border-radius: 5px;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
   font-size: 13px;
+  margin-bottom: ${(props) =>props.bottom };
+  margin-top: ${(props) =>props.top };
   cursor: pointer;
   &:hover {
     background-color: hsl(209, 100%, 37.5%);
@@ -39,14 +43,6 @@ export const QuestionBody = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  span {
-    margin-left: 15px;
-    padding: 5px;
-    justify-content: center;
-    align-items: center;
-    font-size: 13px;
-    font-weight: 500;
-  }
 `;
 const BodyContainer = styled.div`
   display: flex;
@@ -69,6 +65,50 @@ const HrLine = styled.hr`
   margin-left: auto;
   margin-right: auto;
 `;
+
+
+span {
+  margin-left: 15px;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+}
+`
+export const HrLine = styled.hr`
+  width: ${(props) => props.width};
+  height: 1px;
+  background-color: black;
+  margin-top: 25px;
+  margin-left : auto;
+  margin-right : auto;
+  margin-bottom: ${(props) =>props.top };
+`
+const Menu = styled.div`
+  width: 50px;
+  height: 100%;
+  margin-left: 30px;
+  
+`
+const MenuButton = styled.button`
+  border: 0;
+  background: none;
+  font-size: 2rem;
+  color: #888;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+`
+const MenuItem = styled.div`
+  text-align: center;
+  width: 40px;
+  padding: 5px 0 7px;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: #888;
+ margin-top: 15px;
+ margin-bottom: 15px;
 
 const LanguageButton = styled.button`
   width: 40px;
@@ -113,6 +153,8 @@ const QuestionDiv = styled.div`
   }
 `;
 
+
+
 function Question() {
   // const [upDown, setUpDown] = useState(0);
 
@@ -129,6 +171,7 @@ function Question() {
   // }
 
   return (
+
     <Container>
       <div>
         <QuestionTitle>
@@ -137,9 +180,8 @@ function Question() {
               <li key={data.id}>{data.title}</li>
             ))}
           </ul>
-          <AskButton>Ask Question</AskButton>
+        <AskButton width="120px" height="50px">Ask Question</AskButton>
         </QuestionTitle>
-      </div>
       <div>
         <QuestionBody>
           <span>Asked {`1days`}</span>&nbsp;
@@ -147,7 +189,7 @@ function Question() {
           <span>View {"1times"}</span>
         </QuestionBody>
       </div>
-      <HrLine />
+     <HrLine width="95%"/>
       <BodyContainer>
         <MainBar>
           <div className="qestion-section">
@@ -175,6 +217,7 @@ function Question() {
             </QuestionDiv>
           </div>
           <AnswerList AnswerDummy={AnswerDummy} />
+          <WriteAnswer />
         </MainBar>
         <SideBar />
       </BodyContainer>
