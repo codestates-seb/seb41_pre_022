@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {Routes, Route} from 'react-router-dom';
-import Header from './component/Header';
-import Footer from './component/Footer';
-import Main from './page/Main';
-import Login from './page/Login';
-import SignUp from './page/SignUp';
-import MyPage from './page/MyPage';
-import Ask from './page/Ask';
-import './App.css';
-import SideMenu from './component/SideMenu';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./component/Header";
+import Footer from "./component/Footer";
+import Main from "./page/Main";
+import Login from "./page/Login";
+import SignUp from "./page/SignUp";
+import MyPage from "./page/MyPage";
+import Ask from "./page/Ask";
+import "./App.css";
+import SideMenu from "./component/SideMenu";
+import { useLocation } from "react-router-dom";
 import Question from "./page/Question";
 
 function App() {
@@ -33,13 +33,15 @@ function App() {
     <div className="App">
       <Header></Header>
       <section className="main-container">
-      {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
-      {!['/login','/signup', '/question/ask'].includes(path) ?
-      <section className="side-menu-section">
-        <SideMenu path={path}></SideMenu>
-      </section> : <></>
-      }
-      <section className="main-view-section">
+        {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
+        {!["/login", "/signup", "/question/ask"].includes(path) ? (
+          <section className="side-menu-section">
+            <SideMenu path={path}></SideMenu>
+          </section>
+        ) : (
+          <></>
+        )}
+        <section className="main-view-section">
           <Routes>
             <Route path="*" element={<Main />}></Route>
             <Route path="/login" element={<Login />}></Route>
@@ -49,7 +51,6 @@ function App() {
           </Routes>
 
           <Question />
-
         </section>
       </section>
       <Footer></Footer>
