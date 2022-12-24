@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./component/Header";
-import Footer from "./component/Footer";
-import Main from "./page/Main";
-import Login from "./page/Login";
-import SignUp from "./page/SignUp";
-import MyPage from "./page/MyPage";
-import Ask from "./page/Ask";
-import "./App.css";
-import SideMenu from "./component/SideMenu";
-import { useLocation } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import {Routes, Route} from 'react-router-dom';
+import Header from './component/Header';
+import Footer from './component/Footer';
+import Main from './page/Main';
+import Login from './page/Login';
+import SignUp from './page/SignUp';
+import MyPage from './page/MyPage';
+import Ask from './page/Ask';
+import './App.css';
+import SideMenu from './component/SideMenu';
+import { useLocation } from 'react-router-dom';
 import Question from "./page/Question";
 import { checkAuth } from './lib/auth';
 
@@ -42,7 +42,6 @@ function App() {
     <div className="App">
       <Header isLogin={isLogin} setIsLogin={setIsLogin}></Header>
       <section className="main-container">
-<<<<<<< HEAD
       {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
       {!['login','signup', 'question/ask'].includes(path) ?
       <section className="side-menu-section">
@@ -55,23 +54,6 @@ function App() {
             <Route path="/login" element={<Login isLogin={isLogin}/>}></Route>
             <Route path="/signup" element={<SignUp isLogin={isLogin}/>}></Route>
             <Route path="/mypage" element={<MyPage isLogin={isLogin} userInfo={userInfo}/>}></Route>
-=======
-        {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
-        {!["/login", "/signup", "/question/ask"].includes(path) ? (
-          <section className="side-menu-section">
-            <SideMenu path={path}></SideMenu>
-          </section>
-        ) : (
-          <></>
-        )}
-        <section className="main-view-section">
-          <Routes>
-            <Route path="*" element={<Main />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/mypage" element={<MyPage />}></Route>
-            <Route path="/question" element={<Question />}></Route>
->>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
             <Route path="/question/ask" element={<Ask />}></Route>
             <Route path="/question/:questionId" element={<Question/>}></Route>
           </Routes>
