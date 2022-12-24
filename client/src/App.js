@@ -42,7 +42,6 @@ function App() {
     <div className="App">
       <Header isLogin={isLogin} setIsLogin={setIsLogin}></Header>
       <section className="main-container">
-<<<<<<< HEAD
       {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
       {!['login','signup', 'question/ask'].includes(path) ?
       <section className="side-menu-section">
@@ -55,25 +54,8 @@ function App() {
             <Route path="/login" element={<Login isLogin={isLogin}/>}></Route>
             <Route path="/signup" element={<SignUp isLogin={isLogin}/>}></Route>
             <Route path="/mypage" element={<MyPage isLogin={isLogin} userInfo={userInfo}/>}></Route>
-=======
-        {/* path가 login 이거나 signup일때 사이드바 숨기기 */}
-        {!["/login", "/signup", "/question/ask"].includes(path) ? (
-          <section className="side-menu-section">
-            <SideMenu path={path}></SideMenu>
-          </section>
-        ) : (
-          <></>
-        )}
-        <section className="main-view-section">
-          <Routes>
-            <Route path="*" element={<Main />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/mypage" element={<MyPage />}></Route>
-            <Route path="/question" element={<Question />}></Route>
->>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
-            <Route path="/question/ask" element={<Ask />}></Route>
-            <Route path="/question/:questionId" element={<Question/>}></Route>
+            <Route path="/question/ask" element={<Ask isLogin={isLogin} userInfo={userInfo}/>}></Route>
+            <Route path="/question/:questionId" element={<Question isLogin={isLogin} userInfo={userInfo}/>}></Route>
           </Routes>
         </section>
       </section>
