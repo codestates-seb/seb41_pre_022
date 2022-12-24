@@ -64,6 +64,8 @@ function WriteAnswer(isLogin, userInfo, qid) {
     //만들어진 answer 객체를 postAnswer 메소드를 활용해서 서버에 보내야합니다.
   };
 
+  //login 상태가 false 라면 answer 입력창이 보이면 안됩니다.
+  //isLogin props를 이용해서 조건부 렌더링을 구현해주세요!
   return (
     <Total>
       <div>

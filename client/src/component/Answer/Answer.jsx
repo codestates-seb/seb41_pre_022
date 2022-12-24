@@ -36,7 +36,8 @@ const AnswerBody = styled.div`
     }
   }
 `;
-function Answer({ AnswerDummy }) {
+function Answer({ AnswerDummy, userInfo }) {
+  //상위에서 userInfo를 받아 이 답변이 나의 답변이라면 내가 삭제할 수 있어야합니다. (구현 안해도 상관없긴해요)
   return (
     <Container>
       <AnswerBody>
