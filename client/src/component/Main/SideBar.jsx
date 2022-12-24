@@ -5,7 +5,6 @@ import SidebarIcon from "../../static/img/SidebarIcon.png";
 import SidebarIcon2 from "../../static/img/SidebarIcon2.png";
 import SidebarIcon3 from "../../static/img/SidebarIcon3.png";
 const Container = styled.div`
-  width: 300px;
   margin: 24px 0 15px 24px;
 `;
 const Widzet = styled.div`

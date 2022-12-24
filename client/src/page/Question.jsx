@@ -1,108 +1,87 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { data } from '../static/dummyData/dummyData'
 import { BsFilePersonFill } from "react-icons/bs";
 import { useParams } from 'react-router-dom';
+=======
+// import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { Dummy, AnswerDummy } from "../static/DummyDate/DummyDate";
+import { BsFilePersonFill } from "react-icons/bs";
+import SideBar from "../component/Main/SideBar";
+import AnswerList from "../component/Answer/AnswerList";
+import UpDownButton from "../component/Answer/UpDownButton";
+import WriteAnswer from "../component/Answer/WriteAnswer";
+>>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
 
+const Container = styled.div`
+  width: 80%;
+  height: 100%;
+`;
 export const QuestionTitle = styled.div`
-  width: 100%;
   height: 100px;
-
   font-size: 36px;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  
-  li{
-    margin-left: 18px;
+  li {
+    margin-left: 33px;
+    font-size: 15px;
   }
-`
+`;
 export const AskButton = styled.button`
   background-color: hsl(206, 100%, 52%);
   color: #fff;
-  border:1px solid hsl(206, 100%, 40%);
-  width: 100px;
-  height: 50px;
+  border: 1px solid hsl(206, 100%, 40%);
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   margin-right: 28px;
   border-radius: 5px;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
   font-size: 13px;
+  margin-bottom: ${(props) => props.bottom};
+  margin-top: ${(props) => props.top};
   cursor: pointer;
   &:hover {
     background-color: hsl(209, 100%, 37.5%);
   }
-` 
+`;
 export const QuestionBody = styled.div`
-  width: 100%;
+  margin-left: 13px;
   height: 40px;
   display: flex;
   align-items: center;
-
-span {
-  margin-left: 15px;
-  padding: 5px;
-  justify-content: center;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 500;
-  
-}
-`
-const HrLine = styled.hr`
-  width: 95%;
-  height: 1px;
-  background-color: black;
-  margin-top: 15px;
-  margin-left : auto;
-  margin-right : auto;
-`
-const Menu = styled.div`
-  width: 50px;
+  span {
+    margin-left: 15px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+  }
+`;
+const BodyContainer = styled.div`
+  display: flex;
+`;
+const MainBar = styled.div`
+  display: flex;
+  width: 100%;
   height: 100%;
   margin-left: 30px;
-  
-`
-const QuestionBar = styled.div`
-  display: flex;
-  
-`
-const MenuButton = styled.button`
-  border: 0;
-  background: none;
-  font-size: 2rem;
-  color: #888;
-  text-align: center;
-  padding: 0;
-  cursor: pointer;
-`
-const MenuItem = styled.div`
-  text-align: center;
-  width: 40px;
-  padding: 5px 0 7px;
-  font-size: 1.4rem;
-  line-height: 1.4rem;
-  color: #888;
- margin-top: 15px;
- margin-bottom: 15px;
-
-` 
-const DownButton = styled.div`
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #bbb;
-  
-  
-`
-const UpButton = styled.div`
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 20px solid #bbb;
-  margin-top: 30px;
-`
+  flex-direction: column;
+  .qestion-section {
+    display: flex;
+  }
+`;
+export const HrLine = styled.hr`
+  width: ${(props) => props.width};
+  height: 1px;
+  background-color: black;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-bottom: ${(props) => props.top};
+`;
 const LanguageButton = styled.button`
   width: 40px;
   height: 33px;
@@ -110,61 +89,68 @@ const LanguageButton = styled.button`
   border: 1px solid hsl(206, 96%, 90%);
   border-radius: 3px;
   font-size: 12px;
-  color:hsl(206, 85%, 57.5%);
+  color: hsl(206, 85%, 57.5%);
   cursor: pointer;
   &:hover {
     background-color: hsl(206, 93%, 83.5%);
   }
-`
+`;
 const QuestionDiv = styled.div`
   margin: 30px 0 0 25px;
-  width: 100%;
-  height: 100%;
-  
+  width: 97%;
+  > ul > li {
+    word-break: break-all;
+    margin-bottom: 60px;
+  }
   .liName {
-    width:180px;
+    margin-top: 60px;
+    width: 180px;
     height: 70px;
     border-radius: 5px;
     background-color: hsl(206, 96%, 90%);
     border: 2px solid hsl(206, 96%, 90%);
     float: right;
-    
     margin-right: 27px;
     display: flex;
-    
-    
     span {
       font-size: 12px;
       margin-top: 5px;
       margin-left: 8px;
-
       color: hsl(210, 8%, 60%);
-      align-items:center ;
-     
+      align-items: center;
     }
-    a{
+    a {
       text-align: center;
     }
-}
-`
+  }
+`;
 
 function Question() {
+<<<<<<< HEAD
   const [upDown, setUpDown] = useState(0);
   const params = useParams()
   useEffect (() => {
     console.log(params);
     //questionId를 query로 하는 qetQuestion 함수를 작성해야합니다.
   }, [])
+=======
+  // const [upDown, setUpDown] = useState(0);
+
+  // useEffect (() => {
+  //   QuestionDate()
+  // },[] )
+>>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
 
   // const QuestionDate = () => {
   //   let now = new Date();
   //   let nowMonth = now.getMonth();
   //   let nowDate = now.getDate()
   //   let Date = `${nowMonth ,nowDate}`
-    
+
   // }
 
   return (
+<<<<<<< HEAD
     <div> 
       <div>
         <QuestionTitle>
@@ -174,16 +160,50 @@ function Question() {
         <AskButton>Ask Question</AskButton>
         </QuestionTitle>
       </div>
+=======
+    <Container>
+      <QuestionTitle>
+        <ul>
+          {Dummy.data.map((data) => (
+            <li key={data.id}>{data.title}</li>
+          ))}
+        </ul>
+        <AskButton width="120px" height="50px">
+          Ask Question
+        </AskButton>
+      </QuestionTitle>
+>>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
       <div>
         <QuestionBody>
-        <span>Asked {`1days`}</span>&nbsp;
-        <span>Modified {'1days'}</span>
-        <span>View {'1times'}</span>
+          <span>Asked {`1days`}</span>&nbsp;
+          <span>Modified {"1days"}</span>
+          <span>View {"1times"}</span>
         </QuestionBody>
       </div>
-      <HrLine />
-      <QuestionBar>
+      <HrLine width="98%" />
+      <BodyContainer>
+        <MainBar>
+          <div className="qestion-section">
+            <UpDownButton />
+            <QuestionDiv>
+              <ul>
+                {Dummy.data.map((data) => (
+                  <li key={data.id}>
+                    {data.content}{" "}
+                    <li className="liName" key={data.id}>
+                      <span>
+                        asked <br />
+                        <BsFilePersonFill
+                          size="38px"
+                          color="hsl(210, 8%, 45%)"
+                        />
+                        <a href="?">{data.name}</a>
+                      </span>
+                    </li>
+                  </li>
+                ))}
 
+<<<<<<< HEAD
         <Menu>
            <MenuButton onClick={() => setUpDown(upDown +1)}><UpButton /></MenuButton> 
            <MenuItem>{upDown}</MenuItem>
@@ -207,6 +227,19 @@ function Question() {
       </QuestionBar>
     </div>
   )
+=======
+                <LanguageButton>react</LanguageButton>
+              </ul>
+            </QuestionDiv>
+          </div>
+          <AnswerList AnswerDummy={AnswerDummy} />
+          <WriteAnswer />
+        </MainBar>
+        <SideBar />
+      </BodyContainer>
+    </Container>
+  );
+>>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
 }
 
-export default Question
+export default Question;

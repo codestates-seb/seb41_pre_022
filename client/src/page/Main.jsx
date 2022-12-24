@@ -9,7 +9,6 @@ const Container = styled.div`
   display: flex;
 `;
 function Main() {
-  //list element까지하고
   return (
     <Container>
       <div>

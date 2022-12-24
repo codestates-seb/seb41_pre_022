@@ -2,14 +2,11 @@ import styled from "styled-components";
 import Question from "./Question";
 
 const Container = styled.div`
-  width: 750px;
-  height: 10901px;
+  width: 830px;
 `;
 const QuestionWrapper = styled.div`
-  width: 750px;
+  width: 830px;
   height: 120px;
-  /* height: 100%; */
-
   padding: 16px;
   border-bottom: rgba(186, 191, 196) solid 1px;
 `;
