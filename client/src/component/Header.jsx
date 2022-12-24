@@ -5,6 +5,7 @@ import React from "react";
 import styled from "styled-components";
 import stackoverflow from "../static/img/stackoverflow.png";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../lib/auth";
 // import { faStackOverflow } from '@fortawesome/fontawesome-free-brands';
 
 const HeadBar = styled.header`
@@ -64,9 +65,11 @@ const HeadInput = styled.input`
   font-size: 1rem;
 `;
 
-function Header() {
+function Header({isLogin, setIsLogin}) {
   const navigate = useNavigate();
-
+  const toHomeHandler = () => {
+    navigate("/");
+  }
   const toLoginHandler = () => {
     navigate("/login");
   };
@@ -74,11 +77,16 @@ function Header() {
   const toSignUpHandler = () => {
     navigate("/signup");
   };
+
+  const logoutHandler = () => {
+    logout(setIsLogin);
+    window.location.replace('/');
+  }
   return (
     <HeadBar>
       <FontAwesomeIcon className="menu" icon={faBars} />
       {/* <FontAwesomeIcon icon={faStackOverflow} size="2x" /> */}
-      <img className="stack" src={stackoverflow} alt="stackoverflow" />
+      <img className="stack" src={stackoverflow} alt="stackoverflow" onClick={toHomeHandler}/>
       {/* <FontAwesomeIcon icon="fab fa-stack-overflow" /> */}
 
       <HeadUl>
@@ -91,7 +99,8 @@ function Header() {
         <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
         <HeadInput type="text" placeholder="Search" />
       </HeadSearchBar>
-
+      {!isLogin ?
+      <>
       <HeadButton
         onClick={toLoginHandler}
         bgColor="hsl(205, 46%, 92%)"
@@ -107,6 +116,14 @@ function Header() {
       >
         sign up
       </HeadButton>
+      </>
+      : 
+      <HeadButton
+        onClick={logoutHandler}
+        bgColor="hsl(205, 46%, 92%)"
+        hvColor="hsl(206, 93%, 83.5%)">
+        logout
+      </HeadButton>}
     </HeadBar>
   );
 }

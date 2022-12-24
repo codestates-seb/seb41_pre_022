@@ -20,8 +20,8 @@ function QuestionList({ questions }) {
       <ul>
         {questions.map((question) => {
           return (
-            <QuestionWrapper>
-              <Question key={question.id} question={question} />
+            <QuestionWrapper key={question.id}>
+              <Question question={question} />
             </QuestionWrapper>
           );
         })}

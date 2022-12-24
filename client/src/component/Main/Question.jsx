@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 const Container = styled.div`
   display: flex;
@@ -73,6 +74,11 @@ const Author = styled.div`
   }
 `;
 function Question({ question }) {
+  const navigate = useNavigate();
+  const questionLinkHandler = () => {
+    //개발 question으로 이동
+    navigate(`/question/${question.id}`);
+  }
   return (
     <Container>
       <VoteAnswerView>
@@ -81,8 +87,7 @@ function Question({ question }) {
         <div>8 views</div>
       </VoteAnswerView>
       <TitleTagAuthor>
-        <Title>{question.title}</Title>
-
+        <Title onClick={questionLinkHandler}>{question.title}</Title>
         <Tags>
           <span>{question.tags}</span>
           <Author>

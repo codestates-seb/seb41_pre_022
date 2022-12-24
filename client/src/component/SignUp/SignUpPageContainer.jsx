@@ -241,15 +241,15 @@ function SignUpPageContainer() {
         <SignUpSocial />
         <FormContainer>
           <div className="inputLabel">
-            <label for="displayName">Display name</label>
+            <label htmlFor="displayName">Display name</label>
             <input id="displayName" />
           </div>
           <div className="inputLabel">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input id="email" />
           </div>
           <div className="inputLabel">
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input id="password" type="password" minLength="8" required />
           </div>
 
@@ -266,7 +266,7 @@ function SignUpPageContainer() {
           <div className="checkboxContainer">
             <input id="checkbox" type="checkbox" />
             <div className="checkboxText">
-              <label for="checkbox">
+              <label htmlFor="checkbox">
                 Opt-in to receive occasional product updates, user research
                 invitations, company announcements, and digests.
               </label>
@@ -308,7 +308,7 @@ function SignUpPageContainer() {
               Sign up on Talent{" "}
               <svg
                 aria-hidden="true"
-                class="va-text-bottom sm:d-none svg-icon iconShareSm"
+                className="va-text-bottom sm:d-none svg-icon iconShareSm"
                 width="14"
                 height="14"
                 viewBox="0 0 14 14"

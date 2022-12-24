@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { Dummy } from '../static/DummyDate/DummyDate'
+import { data } from '../static/dummyData/dummyData'
 import { BsFilePersonFill } from "react-icons/bs";
+import { useParams } from 'react-router-dom';
 
 export const QuestionTitle = styled.div`
   width: 100%;
@@ -148,11 +149,12 @@ const QuestionDiv = styled.div`
 `
 
 function Question() {
-  const [upDown, setUpDown] = useState(0)
-  
-  // useEffect (() => {
-  //   QuestionDate()
-  // },[] )
+  const [upDown, setUpDown] = useState(0);
+  const params = useParams()
+  useEffect (() => {
+    console.log(params);
+    //questionId를 query로 하는 qetQuestion 함수를 작성해야합니다.
+  }, [])
 
   // const QuestionDate = () => {
   //   let now = new Date();
@@ -167,9 +169,7 @@ function Question() {
       <div>
         <QuestionTitle>
           <ul>
-            {Dummy.data.map((data) => (
-              <li key={data.id}>{data.title}</li>
-            ))}
+            <li key={data.id}>{data.title}</li>
           </ul>
         <AskButton>Ask Question</AskButton>
         </QuestionTitle>
@@ -191,23 +191,20 @@ function Question() {
         </Menu>
         <QuestionDiv>
           <ul>
-              
-            {Dummy.data.map((data) => (
-              <li key={data.id}>{data.content} <li className="liName"key={data.id}>
+            {
+              <div key={data.id}>{data.content} <li className="liName"key={data.id}>
                 <span>asked  <br/>
                   <BsFilePersonFill size="38px" color='hsl(210, 8%, 45%)'/>
                  <a href='?'>{data.name}</a>
                 </span>
-                 </li></li>
-             
-              ))}
+                 </li>
+              </div>
+              }
           
               <LanguageButton>react</LanguageButton>
           </ul> 
         </QuestionDiv>
       </QuestionBar>
-      
-      
     </div>
   )
 }

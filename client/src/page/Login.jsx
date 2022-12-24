@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
 import SocialLogin from '../component/Login/SocialLogin';
 
@@ -64,7 +63,36 @@ const LoginButton = styled.button`
   }
 `
 
-function Login() {
+function Login({isLogin}) {
+  useEffect(() => {
+    if (isLogin) {
+      window.location.replace('/');
+    }
+  }, [isLogin])
+  
+  const [inputInfo, setInputInfo] = useState({
+    email : "",
+    password : ""
+  })
+
+  const onEmailHandler = (event) => {
+    setInputInfo({
+      ...inputInfo,
+      email: event.target.value
+    })
+  }
+
+  const onPWHandler = (event) => {
+    setInputInfo({
+      ...inputInfo,
+      password: event.target.value
+    })
+  }
+
+  useEffect(() => {
+    console.log(inputInfo)
+  }, [inputInfo])
+
   return (
     <LoginPage>
       <div className="login-container">
@@ -74,12 +102,12 @@ function Login() {
           <div>
           <label>Email</label>
           <br />
-          <LoginInput type="text" />
+          <LoginInput type="text" value={inputInfo.email} onChange={onEmailHandler}/>
           </div>
           <div>
           <label>PassWord</label>
           <br />
-          <LoginInput type="text" />
+          <LoginInput type="password" value={inputInfo.password} onChange={onPWHandler} />
           </div>
           <LoginButton>Log in</LoginButton>
          </LoginDiv>
