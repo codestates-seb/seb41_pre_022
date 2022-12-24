@@ -10,4 +10,4 @@ const FooterArea = styled.div`
     height: 100px;
     background-color: #2b2b2b;
 `
-export default Footer
+export default Footer;

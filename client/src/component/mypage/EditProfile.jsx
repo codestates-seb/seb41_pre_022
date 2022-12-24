@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
+import _ from 'lodash';
 function EditProfile({editMode, setEditMode,userInfo}) {
-    const [user, setUser] = useState(userInfo);
+    const [user, setUser] = useState(_.cloneDeep(userInfo));
 
     const onNameHandler = (e) => {
         setUser({
@@ -16,14 +17,12 @@ function EditProfile({editMode, setEditMode,userInfo}) {
             password: e.currentTarget.value
         })
     }
-    //user변동 체크
-    useEffect(() => {
-        console.log(user)
-    }, [user]);
 
     //수정 정보 전달
     const onSubmitHandler = (event) => {
         event.preventDefault();
+        //회원정보를 수정하는 api를 불러와야합니다.
+        //putAccount 메소드를 호출하고, 수정 성공 후 동작, 수정 실패 후 동작을 구현
     }
 
     //수정 취소
@@ -36,6 +35,7 @@ function EditProfile({editMode, setEditMode,userInfo}) {
     const onDeleteHandler = (event) => {
         event.preventDefault();
         //삭제 구현 필요
+        //deleteAccount 메소드를 호출해서 계정을 삭제할 수 있어야합니다.
     }
   return (
     <div>
@@ -76,7 +76,7 @@ function EditProfile({editMode, setEditMode,userInfo}) {
 
 const EditProfileContainer = styled.div`
     > .input-container {
-        /* ${(props) => props.editMode ? '':'filter: blur(1rem);'} */
+        ${(props) => props.editMode ? '':'filter: blur(1rem);'}
         display: flex;
         flex-direction: column;
         gap: 10px;

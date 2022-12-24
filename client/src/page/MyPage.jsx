@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import Profile from '../component/MyPage/Profile';
 import EditProfile from '../component/MyPage/EditProfile';
 
-function MyPage() {
-  const [user, ] = useState({
-    name : "sehanKim",
-    email : "rlatp1409@gmail.com"
-  })
+function MyPage({isLogin, userInfo}) {
+  useEffect(() => {
+    if(!isLogin) {
+      window.location.replace('/')
+    }
+  }, [isLogin])
   const [editMode, setEditMode] = useState(false);
 
   const onClickEditBtn = () => {
@@ -17,13 +18,15 @@ function MyPage() {
   useEffect(() => {
     console.log(editMode);
   }, [editMode]);
-  
-  return (
-    <MyPageContainer>
-      <Profile user={user} onClickEditBtn={onClickEditBtn}/>
-      <EditProfile userInfo={user} editMode={editMode} setEditMode={setEditMode}/>
-    </MyPageContainer>
-  )
+  if (isLogin && userInfo) {
+    return (
+      <MyPageContainer>
+      <Profile user={userInfo} onClickEditBtn={onClickEditBtn}/>
+      <EditProfile userInfo={userInfo} editMode={editMode} setEditMode={setEditMode}/>
+      </MyPageContainer> 
+      )
+  }
+  return <></>
 }
 
 const MyPageContainer = styled.div`

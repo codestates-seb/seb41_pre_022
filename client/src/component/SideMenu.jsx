@@ -1,26 +1,25 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function SideMenu({ path }) {
-  // const location = useLocation();
-  // const [path, setPath] = useState();
-  // useEffect(() => {
-  //     setPath(location.pathname);
-  // }, [location])
-
+function SideMenu({ path, isLogin }) {
+    
+  //사이드 메뉴 추가를 원하시면 배열안에 담으면 됩니다.
   //라우트 정보 name은 menu에 표시될 이름, path는 실제 route path
-  const sideMenus = [
-    { name: "HOME", path: "/" },
-    { name: "Profile", path: "/mypage" },
-    { name: "Question", path: "/question" },
+  const sideMenus = isLogin ? [
+    { name: "HOME", path: "" },
+    { name: "Profile", path: "mypage" },
+    { name: "Question", path: "question" },
+  ] : [
+    { name: "HOME", path: "" },
+    { name: "Question", path: "question" },
   ];
 
   return (
     <SideMenuContainer>
       {sideMenus.map((menu, idx) => (
-        <SideMenuLink key={idx} nowPath={path === menu.path}>
-          <Link to={menu.path}>{menu.name}</Link>
+        <SideMenuLink key={idx} nowPath={path === `${menu.path}`}>
+          <Link to={`/${menu.path}`}>{menu.name}</Link>
         </SideMenuLink>
       ))}
     </SideMenuContainer>
@@ -30,6 +29,7 @@ function SideMenu({ path }) {
 const SideMenuContainer = styled.div`
   min-height: 100vh;
   margin-top: 30px;
+  padding-left: 60px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
