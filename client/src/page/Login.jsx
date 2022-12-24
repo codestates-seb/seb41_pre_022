@@ -64,6 +64,7 @@ const LoginButton = styled.button`
 `
 
 function Login({isLogin}) {
+  //이미 로그인 상태일 경우 홈으로 리다이렉트하는 Hook
   useEffect(() => {
     if (isLogin) {
       window.location.replace('/');
@@ -89,9 +90,11 @@ function Login({isLogin}) {
     })
   }
 
-  useEffect(() => {
-    console.log(inputInfo)
-  }, [inputInfo])
+  const onLoginHandler = () => {
+    //login 버튼을 누름에 따라 로그인이 되어야합니다. 
+    //유저가 input에 입력한 정보는 inputInfo라는 state에 저장됩니다.
+    //login() 함수를 이용하여 로그인 시 창, 로그인 실패시 동작을 구현하세요.
+  }
 
   return (
     <LoginPage>
@@ -109,7 +112,7 @@ function Login({isLogin}) {
           <br />
           <LoginInput type="password" value={inputInfo.password} onChange={onPWHandler} />
           </div>
-          <LoginButton>Log in</LoginButton>
+          <LoginButton onClick={onLoginHandler}>Log in</LoginButton>
          </LoginDiv>
         
 
