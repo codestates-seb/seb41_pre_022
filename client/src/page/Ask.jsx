@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-function Ask({user}) {
+import {Link} from 'react-router-dom';
+function Ask({isLogin, loginInfo}) {
     //질문하기 페이지
     const [step, setStep] = useState(1);
     const [question, setQuestion] = useState({
-        user: user, //answer
+        user: loginInfo ?? "", //answer
         title: "",
         detail: "",
         expect: "",
@@ -30,32 +31,41 @@ function Ask({user}) {
       console.log(question);
     }, [question, step])
     
-  return (
-    <AskContainer>
-        <div className="ask-body">
-        <h1>Ask a public question</h1>
-        <AskDescription>
-            <h2>Writing a good question</h2>
-            <p>You’re ready to ask a programming-related question and this form will help guide you through the process.</p><p>Looking to ask a non-programming question? See the topics here to find a relevant site.</p>
-            <p>Steps</p>
-            <ul>
-                <li>Summarize your problem in a one-line title.</li>
-                <li>Describe your problem in more detail.</li>
-                <li>Describe what you tried and what you expected to happen.</li>
-                <li>Add “tags” which help surface your question to members of the community.</li>
-                <li>Review your question and post it to the site.</li>
-            </ul>
-        </AskDescription> 
-        <TitleInputBox question={question} setQuestion={setQuestion} onNextHandler={onNextHandler}></TitleInputBox>
-        <DetailInputBox question={question} setQuestion={setQuestion} step={step} onNextHandler={onNextHandler}></DetailInputBox>
-        <ExpectInputBox question={question} setQuestion={setQuestion} step={step} onNextHandler={onNextHandler}></ExpectInputBox>
-            <div className="btn-group" style={step>3 ? {display: 'block'} : {display:'none'}}>
-                <button className="btn-submit" type='submit' onClick={onSubmitHandler}>Post your question</button>
-                <button className="btn-cancel" type='cancel' onClick={onCancelHandler}>Discard draft</button>
-            </div>
-        </div>
-    </AskContainer>
-  )
+    if (isLogin) {
+        return (
+            <AskContainer>
+                <div className="ask-body">
+                <h1>Ask a public question</h1>
+                <AskDescription>
+                    <h2>Writing a good question</h2>
+                    <p>You’re ready to ask a programming-related question and this form will help guide you through the process.</p><p>Looking to ask a non-programming question? See the topics here to find a relevant site.</p>
+                    <p>Steps</p>
+                    <ul>
+                        <li>Summarize your problem in a one-line title.</li>
+                        <li>Describe your problem in more detail.</li>
+                        <li>Describe what you tried and what you expected to happen.</li>
+                        <li>Add “tags” which help surface your question to members of the community.</li>
+                        <li>Review your question and post it to the site.</li>
+                    </ul>
+                </AskDescription> 
+                <TitleInputBox question={question} setQuestion={setQuestion} onNextHandler={onNextHandler}></TitleInputBox>
+                <DetailInputBox question={question} setQuestion={setQuestion} step={step} onNextHandler={onNextHandler}></DetailInputBox>
+                <ExpectInputBox question={question} setQuestion={setQuestion} step={step} onNextHandler={onNextHandler}></ExpectInputBox>
+                    <div className="btn-group" style={step>3 ? {display: 'block'} : {display:'none'}}>
+                        <button className="btn-submit" type='submit' onClick={onSubmitHandler}>Post your question</button>
+                        <button className="btn-cancel" type='cancel' onClick={onCancelHandler}>Discard draft</button>
+                    </div>
+                </div>
+            </AskContainer>
+          )
+    } else {
+        return (
+            <LoginFirstHelper>
+                <Link to={'/login'}>👉 You Need to login first.</Link>
+            </LoginFirstHelper>
+        )
+    }
+  
 }
 
 function TitleInputBox ({question, setQuestion ,onNextHandler}) {
@@ -241,6 +251,13 @@ export const InputBoxContainer = styled.div`
         height: 2.5rem;
         font-size: 1rem;
     }
+`
+
+const LoginFirstHelper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
 `
 
 export default Ask

@@ -43,7 +43,7 @@ function Answer({ AnswerDummy }) {
         <div className="text" key={AnswerDummy.id}>
           {AnswerDummy.content}{" "}
         </div>
-        <div className="liName" key={AnswerDummy.id}>
+        <div className="liName" >
           <span>
             answerd <br />{" "}
             <BsFilePersonFill size="38px" color="hsl(210, 8%, 45%)" />

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { data } from '../static/dummyData/dummyData'
 import { BsFilePersonFill } from "react-icons/bs";
 import { useParams } from 'react-router-dom';
-import { Dummy, AnswerDummy } from "../static/dummyData/dummyData";
+import { AnswerDummy } from "../static/dummyData/dummyData";
 import SideBar from "../component/Main/SideBar";
 import AnswerList from "../component/Answer/AnswerList";
 import UpDownButton from "../component/Answer/UpDownButton";
@@ -119,12 +119,13 @@ const QuestionDiv = styled.div`
   }
 `;
 
-function Question() {
-  const [upDown, setUpDown] = useState(0);
+function Question({isLogin, userInfo}) {
   const params = useParams()
   useEffect (() => {
-    console.log(params);
+    const questionId = params.questionId;
+    console.log(questionId);
     //questionId를 query로 하는 qetQuestion 함수를 작성해야합니다.
+    //getQuestion을 불러와 주세요.
   }, [])
 
   // const QuestionDate = () => {
@@ -153,26 +154,9 @@ function Question() {
         <MainBar>
           <div className="qestion-section">
             <UpDownButton />
-            {/* <QuestionDiv>
+            <QuestionDiv>
               <ul>
-                {Dummy.data.map((data) => (
-                  <li key={data.id}>
-                    {data.content}{" "}
-                    <li className="liName" key={data.id}>
-                      <span>
-                        asked <br />
-                        <BsFilePersonFill
-                          size="38px"
-                          color="hsl(210, 8%, 45%)"
-                        />
-                        <a href="?">{data.name}</a>
-                      </span>
-                    </li>
-                  </li>
-                ))} */}
-        <QuestionDiv>
-          <ul>
-            {
+            {/* Question은 각 페이지별로 하나만 존재하면 되기 때문에 map 함수를 쓸 필요가 없습니다. */}
               <div key={data.id}>{data.content} <li className="liName"key={data.id}>
                 <span>asked  <br/>
                   <BsFilePersonFill size="38px" color='hsl(210, 8%, 45%)'/>
@@ -180,13 +164,12 @@ function Question() {
                 </span>
                  </li>
               </div>
-              }
                 <LanguageButton>react</LanguageButton>
               </ul>
             </QuestionDiv>
           </div>
           <AnswerList AnswerDummy={AnswerDummy} />
-          <WriteAnswer />
+          <WriteAnswer isLogin={isLogin} userInfo={userInfo} qid={params.questionId}/>
         </MainBar>
         <SideBar />
       </BodyContainer>

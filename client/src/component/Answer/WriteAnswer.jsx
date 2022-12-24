@@ -48,31 +48,35 @@ const LoginSpan = styled.span`
     color: hsl(206, 100%, 40%);
   }
 `;
-function WriteAnswer() {
-  const [Answer, setAnswer] = useState(false);
+function WriteAnswer(isLogin, userInfo, qid) {
+  //answer의 post 여부를 체크하는 용도이기 때문에 answer라는 변수명은 혼동할 수 있습니다.
+  const [postBtnClicked, setPostBtnClicked] = useState(false);
+  const [answer, setAnswer] = useState({
+    qid: qid,
+    writer: userInfo.name,
+    content: ""
+  })
 
   const onClick = (e) => {
-    setAnswer(true);
+    setPostBtnClicked(true);
     e.preventDefault();
-    console.log(Answer);
+    console.log(postBtnClicked);
+    //만들어진 answer 객체를 postAnswer 메소드를 활용해서 서버에 보내야합니다.
   };
 
   return (
     <Total>
       <div>
-        {/* <HrLine top="20px" width="100%" /> */}
-
         <h2>Your Answer</h2>
         <CKEditor
           editor={ClassicEditor}
           data=""
-          onReady={(editor) => {
-            // You can store the "editor" and use when it is needed.
-            console.log("Editor is ready to use!", editor);
-          }}
           onChange={(event, editor) => {
             const data = editor.getData();
-            console.log({ event, editor, data });
+            setAnswer({
+              ...answer,
+              content: data
+            })
           }}
           config={{
             toolbar: {
@@ -98,15 +102,9 @@ function WriteAnswer() {
               ],
             },
           }}
-          onBlur={(event, editor) => {
-            console.log("Blur.", editor);
-          }}
-          onFocus={(event, editor) => {
-            console.log("Focus.", editor);
-          }}
         />
         <ClickAnswer>
-          {Answer ? (
+          {postBtnClicked ? (
             <ul>
               <p>Thanks for contributing an answer to Stack Overflow!</p>
 

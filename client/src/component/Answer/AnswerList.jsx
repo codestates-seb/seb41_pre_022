@@ -4,6 +4,7 @@ import Answer from "./Answer";
 import UpDownButton from "./UpDownButton";
 const Container = styled.div`
   margin-top: 95px;
+  display: block;
   width: 100%;
 `;
 const AnswerWrapper = styled.div`

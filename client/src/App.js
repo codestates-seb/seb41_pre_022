@@ -54,8 +54,8 @@ function App() {
             <Route path="/login" element={<Login isLogin={isLogin}/>}></Route>
             <Route path="/signup" element={<SignUp isLogin={isLogin}/>}></Route>
             <Route path="/mypage" element={<MyPage isLogin={isLogin} userInfo={userInfo}/>}></Route>
-            <Route path="/question/ask" element={<Ask />}></Route>
-            <Route path="/question/:questionId" element={<Question/>}></Route>
+            <Route path="/question/ask" element={<Ask isLogin={isLogin} userInfo={userInfo}/>}></Route>
+            <Route path="/question/:questionId" element={<Question isLogin={isLogin} userInfo={userInfo}/>}></Route>
           </Routes>
         </section>
       </section>
