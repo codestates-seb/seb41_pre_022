@@ -1,19 +1,13 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { data } from '../static/dummyData/dummyData'
 import { BsFilePersonFill } from "react-icons/bs";
 import { useParams } from 'react-router-dom';
-=======
-// import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Dummy, AnswerDummy } from "../static/DummyDate/DummyDate";
-import { BsFilePersonFill } from "react-icons/bs";
+import { Dummy, AnswerDummy } from "../static/dummyData/dummyData";
 import SideBar from "../component/Main/SideBar";
 import AnswerList from "../component/Answer/AnswerList";
 import UpDownButton from "../component/Answer/UpDownButton";
 import WriteAnswer from "../component/Answer/WriteAnswer";
->>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
 
 const Container = styled.div`
   width: 80%;
@@ -126,20 +120,12 @@ const QuestionDiv = styled.div`
 `;
 
 function Question() {
-<<<<<<< HEAD
   const [upDown, setUpDown] = useState(0);
   const params = useParams()
   useEffect (() => {
     console.log(params);
     //questionId를 query로 하는 qetQuestion 함수를 작성해야합니다.
   }, [])
-=======
-  // const [upDown, setUpDown] = useState(0);
-
-  // useEffect (() => {
-  //   QuestionDate()
-  // },[] )
->>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
 
   // const QuestionDate = () => {
   //   let now = new Date();
@@ -150,42 +136,24 @@ function Question() {
   // }
 
   return (
-<<<<<<< HEAD
-    <div> 
-      <div>
+    <Container>
         <QuestionTitle>
           <ul>
             <li key={data.id}>{data.title}</li>
           </ul>
         <AskButton>Ask Question</AskButton>
         </QuestionTitle>
-      </div>
-=======
-    <Container>
-      <QuestionTitle>
-        <ul>
-          {Dummy.data.map((data) => (
-            <li key={data.id}>{data.title}</li>
-          ))}
-        </ul>
-        <AskButton width="120px" height="50px">
-          Ask Question
-        </AskButton>
-      </QuestionTitle>
->>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
-      <div>
         <QuestionBody>
           <span>Asked {`1days`}</span>&nbsp;
           <span>Modified {"1days"}</span>
           <span>View {"1times"}</span>
         </QuestionBody>
-      </div>
       <HrLine width="98%" />
       <BodyContainer>
         <MainBar>
           <div className="qestion-section">
             <UpDownButton />
-            <QuestionDiv>
+            {/* <QuestionDiv>
               <ul>
                 {Dummy.data.map((data) => (
                   <li key={data.id}>
@@ -201,14 +169,7 @@ function Question() {
                       </span>
                     </li>
                   </li>
-                ))}
-
-<<<<<<< HEAD
-        <Menu>
-           <MenuButton onClick={() => setUpDown(upDown +1)}><UpButton /></MenuButton> 
-           <MenuItem>{upDown}</MenuItem>
-           <MenuButton onClick={() => setUpDown(upDown - 1)}><DownButton /></MenuButton> 
-        </Menu>
+                ))} */}
         <QuestionDiv>
           <ul>
             {
@@ -220,14 +181,6 @@ function Question() {
                  </li>
               </div>
               }
-          
-              <LanguageButton>react</LanguageButton>
-          </ul> 
-        </QuestionDiv>
-      </QuestionBar>
-    </div>
-  )
-=======
                 <LanguageButton>react</LanguageButton>
               </ul>
             </QuestionDiv>
@@ -239,7 +192,6 @@ function Question() {
       </BodyContainer>
     </Container>
   );
->>>>>>> 9ccb649ddb23174c43210fb7b6c39a0fd3429a32
 }
 
 export default Question;

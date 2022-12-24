@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./component/Header";
-import Footer from "./component/Footer";
-import Main from "./page/Main";
-import Login from "./page/Login";
-import SignUp from "./page/SignUp";
-import MyPage from "./page/MyPage";
-import Ask from "./page/Ask";
-import "./App.css";
-import SideMenu from "./component/SideMenu";
-import { useLocation } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import {Routes, Route} from 'react-router-dom';
+import Header from './component/Header';
+import Footer from './component/Footer';
+import Main from './page/Main';
+import Login from './page/Login';
+import SignUp from './page/SignUp';
+import MyPage from './page/MyPage';
+import Ask from './page/Ask';
+import './App.css';
+import SideMenu from './component/SideMenu';
+import { useLocation } from 'react-router-dom';
 import Question from "./page/Question";
 import { checkAuth } from './lib/auth';
 
@@ -54,8 +54,8 @@ function App() {
             <Route path="/login" element={<Login isLogin={isLogin}/>}></Route>
             <Route path="/signup" element={<SignUp isLogin={isLogin}/>}></Route>
             <Route path="/mypage" element={<MyPage isLogin={isLogin} userInfo={userInfo}/>}></Route>
-            <Route path="/question/ask" element={<Ask isLogin={isLogin} userInfo={userInfo}/>}></Route>
-            <Route path="/question/:questionId" element={<Question isLogin={isLogin} userInfo={userInfo}/>}></Route>
+            <Route path="/question/ask" element={<Ask />}></Route>
+            <Route path="/question/:questionId" element={<Question/>}></Route>
           </Routes>
         </section>
       </section>

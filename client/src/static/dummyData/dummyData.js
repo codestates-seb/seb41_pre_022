@@ -6,8 +6,24 @@ export const data = {
             "name":"Noh su hyuok"
         }
 
-
-
+export const AnswerDummy = {
+  data : [{
+    id: 1,
+    content: "답변입니다 답변입니다 답변입니다답변입니다답변입니다 답변입니다 답변입니다",
+    name : 'seafscz'
+    },
+    {
+      id: 2,
+      content: "답변입니다 답변입니다 답변입니다답변입니다답변입니다 답변입니다 답변입니다",
+      name : 'ddadqwq'
+    },
+    {
+      id: 3,
+      content: "답변입니다 답변입니다 답변입니다답변입니다답변입니다 답변입니다 답변입니다",
+      name : 'qweqscz'
+    }
+  ]
+}
 
 export const questions = [
             {
