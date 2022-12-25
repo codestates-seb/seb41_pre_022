@@ -6,8 +6,10 @@ import com.stackoverflow.stackoverflow.Member.entity.Member;
 import com.stackoverflow.stackoverflow.Member.service.MemberService;
 import com.stackoverflow.stackoverflow.Question.entity.Question;
 import com.stackoverflow.stackoverflow.Question.service.QuestionService;
-import com.stackoverflow.stackoverflow.exception.BusinessLogicException;
-import com.stackoverflow.stackoverflow.exception.ExceptionCode;
+//import com.stackoverflow.stackoverflow.exception.BusinessLogicException;
+//import com.stackoverflow.stackoverflow.exception.ExceptionCode;
+import com.stackoverflow.stackoverflow.global.exception.BusinessLogicException;
+import com.stackoverflow.stackoverflow.global.exception.ExceptionCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -58,8 +60,10 @@ public class AnswerService { //Controller의 요청 처리 클래스
     //gets에 연동
     public Page<Answer> findAnswers(long questionId, int page, int size) {
         questionService.findVerifiedMember(questionId);
-        return answerRepository.findAllByAnswerId(questionId, PageRequest.of(page, size,
-                Sort.by("answerId").descending()));
+        return answerRepository.findAllByQuestion(
+                //파라미터가 객체라서 questionId를 가진 객체를 생성한 다음 넘겨준다.
+                new Question(questionId, null, null, null),
+                PageRequest.of(page, size, Sort.by("answerId").descending()));
     }
 
     //delete에 연동

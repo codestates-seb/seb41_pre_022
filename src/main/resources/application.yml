@@ -1,4 +1,8 @@
 spring:
+#  sql:
+#    init:
+#        schema-locations: classpath*:db/h2/schema.sql #테스트용 테이블 생성
+#        data-locations: classpath*:db/h2/data.sql #테스트용 데이터 삽입
   h2:
     console:
       enabled: true

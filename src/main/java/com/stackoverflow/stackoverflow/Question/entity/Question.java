@@ -2,7 +2,9 @@ package com.stackoverflow.stackoverflow.Question.entity;
 
 //import com.stackoverflow.stackoverflow.feature.Answer.entity.Answer;
 //import com.stackoverflow.stackoverflow.feature.Member.entity.Member;
-import com.stackoverflow.stackoverflow.global.audit.Auditable;
+import com.stackoverflow.stackoverflow.Answer.entity.Answer;
+import com.stackoverflow.stackoverflow.Member.entity.Member;
+import com.stackoverflow.stackoverflow.audit.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,19 +19,16 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Question extends Auditable {
+public class Question extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Question_ID")
+    @Column(name = "QUESTION_ID")
     private long questionId;
     @Column(length = 50, nullable = false)
     private String questionTitle;
     @Column(length = 1000, nullable = false)
     private String questionBody;
-//    @OneToMany(mappedBy = "question")
-//    private List<Answer> answer_ids = new ArrayList<>();
-//    private List<Long> answer_ids = new ArrayList<>();
-//    @OneToOne
-//    private Member user_name;
-//    private String user_name;
+    @OneToOne
+    @JoinColumn(name = "MEMBER_ID")
+    private Member memberId;
 }
