@@ -28,7 +28,9 @@ public class Question extends Auditable{
     private String questionTitle;
     @Column(length = 1000, nullable = false)
     private String questionBody;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
-    private Member memberId;
+    private Member member;
+    @OneToMany(mappedBy="question")
+    private List<Answer> answer = new ArrayList<>();
 }
