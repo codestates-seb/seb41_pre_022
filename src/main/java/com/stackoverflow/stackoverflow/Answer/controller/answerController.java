@@ -75,7 +75,6 @@ public class answerController {
                 new MultiResponseDto<>(mapper.answersToAnswerResponseDtos(response),
                         pageAnswers),
                 HttpStatus.OK);
-
     }
 
     //답변 삭제(1개)
