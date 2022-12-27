@@ -60,7 +60,7 @@ public class AnswerService { //Controller의 요청 처리 클래스
         questionService.findVerifiedMember(questionId);
         return answerRepository.findAllByQuestion(
                 //파라미터가 객체라서 questionId를 가진 객체를 생성한 다음 넘겨준다.
-                new Question(questionId, null, null, null),
+                new Question(questionId, null, null, null, null),
                 PageRequest.of(page, size, Sort.by("answerId").descending()));
     }
 
