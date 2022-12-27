@@ -2,8 +2,8 @@ package com.stackoverflow.stackoverflow.Member.service;
 
 import com.stackoverflow.stackoverflow.Member.entity.Member;
 import com.stackoverflow.stackoverflow.Member.repository.MemberRepository;
-import com.stackoverflow.stackoverflow.global.exception.BusinessLogicException;
-import com.stackoverflow.stackoverflow.global.exception.ExceptionCode;
+import com.stackoverflow.stackoverflow.exception.BusinessLogicException;
+import com.stackoverflow.stackoverflow.exception.ExceptionCode;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;

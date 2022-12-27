@@ -2,8 +2,8 @@ package com.stackoverflow.stackoverflow.Question.service;
 
 import com.stackoverflow.stackoverflow.Question.entity.Question;
 import com.stackoverflow.stackoverflow.Question.repository.QuestionRepository;
-import com.stackoverflow.stackoverflow.global.exception.BusinessLogicException;
-import com.stackoverflow.stackoverflow.global.exception.ExceptionCode;
+import com.stackoverflow.stackoverflow.exception.BusinessLogicException;
+import com.stackoverflow.stackoverflow.exception.ExceptionCode;
 import com.stackoverflow.stackoverflow.global.utils.CustomBeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
