@@ -5,8 +5,7 @@ import com.stackoverflow.stackoverflow.Answer.dto.AnswerPostDto;
 import com.stackoverflow.stackoverflow.Answer.entity.Answer;
 import com.stackoverflow.stackoverflow.Answer.mapper.AnswerMapper;
 import com.stackoverflow.stackoverflow.Answer.service.AnswerService;
-//import com.stackoverflow.stackoverflow.dto.MultiResponseDto;
-import com.stackoverflow.stackoverflow.global.dto.MultiResponseDto;
+import com.stackoverflow.stackoverflow.dto.MultiResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.connector.Response;
 import org.springframework.data.domain.Page;
@@ -24,7 +23,7 @@ import java.util.List;
 * */
 
 @RestController
-@RequestMapping("v1/answer")
+@RequestMapping("/answers")
 @Validated
 @Slf4j
 public class answerController {
