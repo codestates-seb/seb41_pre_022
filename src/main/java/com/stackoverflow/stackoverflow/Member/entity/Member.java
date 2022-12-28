@@ -30,6 +30,9 @@ public class Member extends Auditable {
     @Column(nullable = false)
     private String password;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
+
     @OneToMany(mappedBy="member")
     private List<Question> questions = new ArrayList<>();
 
