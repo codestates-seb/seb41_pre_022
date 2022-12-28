@@ -61,4 +61,5 @@ public class SecurityController {
     public String admin(){
         return "Only Admin Access";
     }
+
 }
