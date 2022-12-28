@@ -142,7 +142,7 @@ function Question({isLogin, userInfo}) {
           <ul>
             <li key={data.id}>{data.title}</li>
           </ul>
-        <AskButton>Ask Question</AskButton>
+        <AskButton width="120px" height="55px">Ask Question</AskButton>
         </QuestionTitle>
         <QuestionBody>
           <span>Asked {`1days`}</span>&nbsp;
