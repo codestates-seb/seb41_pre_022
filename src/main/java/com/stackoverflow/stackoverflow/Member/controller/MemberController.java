@@ -26,7 +26,6 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberMapper mapper;
 
-
     @PatchMapping("/{member-id}")
     public ResponseEntity patchMember(
             @PathVariable("member-id") @Positive long memberid,
