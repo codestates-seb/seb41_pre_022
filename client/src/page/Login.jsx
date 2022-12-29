@@ -75,7 +75,7 @@ function Login({isLogin}) {
   const [emailMsg , setEmailMsg] = useState("")
   const [passwordMsg , setPasswordMsg] = useState("")
   
-  const [loginFail, setLoginFail] = useState("")
+  // const [loginFail, setLoginFail] = useState("")
   
   
   //이미 로그인 상태일 경우 홈으로 리다이렉트하는 Hook
@@ -102,30 +102,28 @@ function Login({isLogin}) {
       ...inputInfo,
       password: event.target.value
     })
+
   }
 
   const onLoginHandler = () => {
     //login 버튼을 누름에 따라 로그인이 되어야합니다. 
     //유저가 input에 입력한 정보는 inputInfo라는 state에 저장됩니다.
     //login() 함수를 이용하여 로그인 시 창, 로그인 실패시 동작을 구현하세요.
-    // 만약 @가 있으면 맞는 이메일 이니까 그대로 나둠 폴스로 나두고 없으면 잘못된 이메일 setEmail 트루 
     if(inputInfo.email.length === 0){
       setEmailMsg("email을 입력하세요")
-      return;
     }else if (!(inputInfo.email.includes("@") && email.includes("."))){
-      console.log("@,. 없음 확인")
       setEmailMsg("잘못된 email주소 입니다")
-      return;
+      console.log(inputInfo)
     }
-    // 코드 문제... 왜 안되지? 
+   // 왜 콘솔을 2번째에 찍어야 호출이 될까? 
     if(inputInfo.password.length === 0){
       setPasswordMsg("Password를 입력하세요")
       return;
     }else if(inputInfo.password.length <= 8){
       setPasswordMsg("8자리 이상 적으세요.")
+   
       
     }
-    console.log(inputInfo)
 
   }
 

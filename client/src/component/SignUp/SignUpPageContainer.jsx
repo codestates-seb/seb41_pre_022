@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import SignUpSocial from "./SignUpSocial";
 import { FaQuestionCircle } from "react-icons/fa";
@@ -90,6 +90,12 @@ const FormContainer = styled.div`
       font-weight: 600;
       font-family: -apple-system, "system-ui", "Sehoe UI Adjusted", "Segoe UI",
         "Liberation Sans", sans-serif;
+    }
+    p{
+      font-size: 13px;
+       text-align: center;
+       color: hsl(358, 70%, 70%);
+       
     }
   }
   input {
@@ -189,6 +195,64 @@ const FormContainer = styled.div`
 `;
 
 function SignUpPageContainer() {
+  const [display , setDisplay] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const [displayMsg , setDisplayMsg] = useState("")
+  const [emailMsg, setEmailMsg] = useState("")
+  const [passwordMsg, setPasswordMsg] = useState("")
+
+  const [inputInfo, setInputInfo] = useState({
+    display : "",
+    email : "",
+    password: "",
+  })
+  const disPlayValue = (event) => {
+    setInputInfo({
+      ...inputInfo,
+      display:event.target.value
+    })
+
+  }
+  const emailValue = (event) => {
+    setInputInfo({
+      ...inputInfo,
+      email:event.target.value
+    })
+        
+
+  }
+  const passwordValue = (event) => {
+    setInputInfo({
+      ...inputInfo,
+      password:event.target.value
+    })
+         
+
+  }
+  const SignButton = () => {
+    if(inputInfo.display.length === 0) {
+      setDisplayMsg("displayName cannot be empty.") 
+    }else if(inputInfo.display.length > 20 || display.length < 4){
+      setDisplayMsg("The displayName is not a valid displayName.")
+      console.log(inputInfo);
+    }
+     if(inputInfo.email.length === 0) {
+      setEmailMsg("Email cannot be empty.")
+    }else if(!(inputInfo.email.includes("@") && email.includes("."))){
+      setEmailMsg("The email is not a valid email address.")
+    }
+     if(inputInfo.password.length === 0){
+      setPasswordMsg("Password cannot be empty.") 
+        return;
+    }else if(inputInfo.password.length > 12 ){
+      setPasswordMsg("The password is not a valid password.")
+      
+      return;
+    }
+  }
+  // setPasswordMsg 작동 안함 왜? 
   return (
     <Container>
       <TextContainer>
@@ -242,15 +306,19 @@ function SignUpPageContainer() {
         <FormContainer>
           <div className="inputLabel">
             <label htmlFor="displayName">Display name</label>
-            <input id="displayName" />
+            <input id="displayName" value={inputInfo.display} onChange={disPlayValue}/>
+            <p>{displayMsg}</p>
+            
           </div>
           <div className="inputLabel">
             <label htmlFor="email">Email</label>
-            <input id="email" />
+            <input id="email" value={inputInfo.email} onChange={emailValue}/>
+            <p>{emailMsg}</p>
           </div>
           <div className="inputLabel">
             <label htmlFor="password">Password</label>
-            <input id="password" type="password" minLength="8" required />
+            <input id="password" value={inputInfo.password} type="password" minLength="8" onChange={passwordValue} required />
+          <p>{passwordMsg}</p>
           </div>
 
           <div className="passwordComment">
@@ -273,7 +341,7 @@ function SignUpPageContainer() {
             </div>
             <FaQuestionCircle size="30" color="rgb(106,115,124)" />
           </div>
-          <button className="blueButton">Sign up</button>
+          <button onClick={SignButton} className="blueButton">Sign up</button>
           <div className="policy">
             By clicking “Sign up”, you agree to our{" "}
             <a
