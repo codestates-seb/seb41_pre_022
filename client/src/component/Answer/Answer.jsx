@@ -21,20 +21,20 @@ const AnswerBody = styled.div`
     width: 180px;
     height: 70px;
     border-radius: 5px;
-    background-color: hsl(206, 96%, 90%);
-    border: 2px solid hsl(206, 96%, 90%);
+    color: #6a737c;
     float: right;
     margin-right: 27px;
     display: flex;
     span {
       font-size: 12px;
-      margin-top: 5px;
+      margin-top: 6px;
       margin-left: 8px;
       color: hsl(210, 8%, 60%);
       align-items: center;
     }
     a {
       text-align: center;
+      color: #0074cc;
     }
   }
 `;

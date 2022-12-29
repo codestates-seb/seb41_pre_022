@@ -10,11 +10,12 @@ import UpDownButton from "../component/Answer/UpDownButton";
 import WriteAnswer from "../component/Answer/WriteAnswer";
 
 const Container = styled.div`
-  width: 90%;
+  width: 85%;
   height: 100%;
 `;
 export const QuestionTitle = styled.div`
-  height: 100px;
+  height: 70px;
+  margin-top: 30px;
   font-size: 27px;
   align-items: center;
   display: flex;
@@ -25,8 +26,8 @@ export const AskButton = styled.button`
   background-color: hsl(206, 100%, 52%);
   border: 1px solid hsl(206, 100%, 40%);
   color: #fff;
-  width: 103px;
-  height: 38px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border-radius: 5px;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
   font-size: 13px;
@@ -37,7 +38,6 @@ export const AskButton = styled.button`
 `;
 export const QuestionBody = styled.div`
   margin-left: 13px;
-  height: 34px;
   display: flex;
   align-items: center;
   span {
@@ -136,7 +136,9 @@ function Question({ isLogin, userInfo }) {
         <ul>
           <div>{data.title}</div>
         </ul>
-        <AskButton>Ask Question</AskButton>
+        <AskButton width={"103px"} height={"38px"}>
+          Ask Question
+        </AskButton>
       </QuestionTitle>
       <QuestionBody>
         <span>Asked {`1days`}</span>&nbsp;
