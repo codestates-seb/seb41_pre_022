@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { BsFilePersonFill } from "react-icons/bs";
 const Container = styled.li`
   display: flex;
+  width: 100%;
 `;
 const AnswerBody = styled.div`
+  width: 100%;
   padding-top: 28px;
   margin-left: 24px;
   font-size: 1;
@@ -44,7 +46,7 @@ function Answer({ AnswerDummy, userInfo }) {
         <div className="text" key={AnswerDummy.id}>
           {AnswerDummy.content}{" "}
         </div>
-        <div className="liName" >
+        <div className="liName">
           <span>
             answerd <br />{" "}
             <BsFilePersonFill size="38px" color="hsl(210, 8%, 45%)" />
