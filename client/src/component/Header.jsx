@@ -87,6 +87,7 @@ function Header({isLogin, setIsLogin}) {
     logout(setIsLogin);
     window.location.replace('/');
   }
+  //단순 뒤로가기 인가?
   return (
     <HeadBar>
       <OrangeLine />

@@ -234,13 +234,13 @@ function SignUpPageContainer() {
   const SignButton = () => {
     if(inputInfo.display.length === 0) {
       setDisplayMsg("displayName cannot be empty.") 
-    }else if(inputInfo.display.length > 20 || display.length < 4){
+    }else if(inputInfo.display.length > 8){
       setDisplayMsg("The displayName is not a valid displayName.")
       console.log(inputInfo);
     }
      if(inputInfo.email.length === 0) {
       setEmailMsg("Email cannot be empty.")
-    }else if(!(inputInfo.email.includes("@") && email.includes("."))){
+    }else if(!(inputInfo.email.includes("@"))){
       setEmailMsg("The email is not a valid email address.")
     }
      if(inputInfo.password.length === 0){
@@ -248,8 +248,7 @@ function SignUpPageContainer() {
         return;
     }else if(inputInfo.password.length > 12 ){
       setPasswordMsg("The password is not a valid password.")
-      
-      return;
+        return;
     }
   }
   // setPasswordMsg 작동 안함 왜? 
