@@ -1,5 +1,7 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "./API_BASE_URL";
+
 //Main 메뉴에서 수행될 함수로 전체 questionList를 받아오는 api
 const getQuestionList = async () => {
   const data = await axios
@@ -25,8 +27,20 @@ const putQuestion = async (question) => {
 };
 
 //Question 삭제
-const deleteQuestion = async (qid) => {
+const DeleteQuestion = async (qid) => {
   //delete 메서드로 질문을 삭제하는 api (questionId를 params로 전달)
+  //question/questionId >> questionId이 qid이다 qid와 동일한 question을 삭제 하는거 같다 그러면 삭제 버튼도 있어야 겠지?
+  //버튼으로 삼항연산자로 로그인시 (isLogin?) true면 버튼 나오고 아니면 버튼은 안보이게 해보기!
+  // navigat으로 홈 화면으로 가게 한거 같은데 확인이 안되어서 확실하지 않다...
+  const navigate = useNavigate();
+
+  axios
+    .delete(`http://localhost:8080/questions/${qid}`)
+    .then((res) => {
+      console.log(res);
+      navigate("/");
+    })
+    .catch((err) => console.log(err));
 };
 
-export { getQuestionList, postQuestion };
+export { getQuestionList, postQuestion, DeleteQuestion };
