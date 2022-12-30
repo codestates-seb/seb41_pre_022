@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { data } from '../static/dummyData/dummyData'
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { data } from "../static/dummyData/dummyData";
 import { BsFilePersonFill } from "react-icons/bs";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import { AnswerDummy } from "../static/dummyData/dummyData";
 import SideBar from "../component/Main/SideBar";
 import AnswerList from "../component/Answer/AnswerList";
@@ -10,32 +10,27 @@ import UpDownButton from "../component/Answer/UpDownButton";
 import WriteAnswer from "../component/Answer/WriteAnswer";
 
 const Container = styled.div`
-  width: 80%;
+  width: 85%;
   height: 100%;
 `;
 export const QuestionTitle = styled.div`
-  height: 100px;
-  font-size: 36px;
+  height: 70px;
+  margin-top: 30px;
+  font-size: 27px;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  li {
-    margin-left: 33px;
-    font-size: 15px;
-  }
+  margin-left: 33px;
 `;
 export const AskButton = styled.button`
   background-color: hsl(206, 100%, 52%);
-  color: #fff;
   border: 1px solid hsl(206, 100%, 40%);
+  color: #fff;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  margin-right: 28px;
   border-radius: 5px;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
   font-size: 13px;
-  margin-bottom: ${(props) => props.bottom};
-  margin-top: ${(props) => props.top};
   cursor: pointer;
   &:hover {
     background-color: hsl(209, 100%, 37.5%);
@@ -43,7 +38,6 @@ export const AskButton = styled.button`
 `;
 export const QuestionBody = styled.div`
   margin-left: 13px;
-  height: 40px;
   display: flex;
   align-items: center;
   span {
@@ -119,14 +113,14 @@ const QuestionDiv = styled.div`
   }
 `;
 
-function Question({isLogin, userInfo}) {
-  const params = useParams()
-  useEffect (() => {
+function Question({ isLogin, userInfo }) {
+  const params = useParams();
+  useEffect(() => {
     const questionId = params.questionId;
     console.log(questionId);
     //questionId를 query로 하는 qetQuestion 함수를 작성해야합니다.
     //getQuestion을 불러와 주세요.
-  }, [])
+  }, []);
 
   // const QuestionDate = () => {
   //   let now = new Date();
@@ -138,17 +132,19 @@ function Question({isLogin, userInfo}) {
 
   return (
     <Container>
-        <QuestionTitle>
-          <ul>
-            <li key={data.id}>{data.title}</li>
-          </ul>
-        <AskButton width="120px" height="55px">Ask Question</AskButton>
-        </QuestionTitle>
-        <QuestionBody>
-          <span>Asked {`1days`}</span>&nbsp;
-          <span>Modified {"1days"}</span>
-          <span>View {"1times"}</span>
-        </QuestionBody>
+      <QuestionTitle>
+        <ul>
+          <div>{data.title}</div>
+        </ul>
+        <AskButton width={"103px"} height={"38px"}>
+          Ask Question
+        </AskButton>
+      </QuestionTitle>
+      <QuestionBody>
+        <span>Asked {`1days`}</span>&nbsp;
+        <span>Modified {"1days"}</span>
+        <span>View {"1times"}</span>
+      </QuestionBody>
       <HrLine width="98%" />
       <BodyContainer>
         <MainBar>
@@ -156,20 +152,27 @@ function Question({isLogin, userInfo}) {
             <UpDownButton />
             <QuestionDiv>
               <ul>
-            {/* Question은 각 페이지별로 하나만 존재하면 되기 때문에 map 함수를 쓸 필요가 없습니다. */}
-              <div key={data.id}>{data.content} <li className="liName"key={data.id}>
-                <span>asked  <br/>
-                  <BsFilePersonFill size="38px" color='hsl(210, 8%, 45%)'/>
-                 <a href='?'>{data.name}</a>
-                </span>
-                 </li>
-              </div>
+                {/* Question은 각 페이지별로 하나만 존재하면 되기 때문에 map 함수를 쓸 필요가 없습니다. */}
+                <div key={data.id}>
+                  {data.content}{" "}
+                  <li className="liName" key={data.id}>
+                    <span>
+                      asked <br />
+                      <BsFilePersonFill size="38px" color="hsl(210, 8%, 45%)" />
+                      <a href="?">{data.name}</a>
+                    </span>
+                  </li>
+                </div>
                 <LanguageButton>react</LanguageButton>
               </ul>
             </QuestionDiv>
           </div>
           <AnswerList AnswerDummy={AnswerDummy} />
-          <WriteAnswer isLogin={isLogin} userInfo={userInfo} qid={params.questionId}/>
+          <WriteAnswer
+            isLogin={isLogin}
+            userInfo={userInfo}
+            qid={params.questionId}
+          />
         </MainBar>
         <SideBar />
       </BodyContainer>

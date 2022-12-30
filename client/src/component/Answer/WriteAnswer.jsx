@@ -15,7 +15,7 @@ const Total = styled.div`
   .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
     min-height: 400px;
     margin-bottom: 20px;
-    width: 995px;
+    width: 1125px;
   }
 
   h2 {
@@ -39,8 +39,7 @@ const ClickAnswer = styled.div`
   }
 `;
 const LoginSpan = styled.span`
-  /* display: flex; */
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
   margin-left: 10px;
 
@@ -54,8 +53,8 @@ function WriteAnswer(isLogin, userInfo, qid) {
   const [answer, setAnswer] = useState({
     qid: qid,
     writer: userInfo.name,
-    content: ""
-  })
+    content: "",
+  });
 
   const onClick = (e) => {
     setPostBtnClicked(true);
@@ -77,8 +76,8 @@ function WriteAnswer(isLogin, userInfo, qid) {
             const data = editor.getData();
             setAnswer({
               ...answer,
-              content: data
-            })
+              content: data,
+            });
           }}
           config={{
             toolbar: {
